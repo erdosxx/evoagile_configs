@@ -157,6 +157,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " ---------------------------------------------------
 
+" for switching between a dark and light Solarized theme
+call togglebg#map("<F5>")
+
 " allow backspacing over everything in insert mode
 " Ref: https://til.hashrocket.com/posts/f5531b6da0-backspace-options
 set backspace=indent,eol,start
