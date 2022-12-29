@@ -1,7 +1,7 @@
 " Disable file type detection for Vundle package manager
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
-    finish
+  finish
 endif
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -76,10 +76,10 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 if has('gui_running')
-    set background=dark
-    colorscheme solarized
+  set background=dark
+  colorscheme solarized
 else
-    colorscheme zenburn
+  colorscheme zenburn
 endif
 
 " To open file window :NERDTree
@@ -122,7 +122,7 @@ autocmd BufWrite * :Autoformat
 
 Plugin 'jupyter-vim/jupyter-vim'
 " to allow(=1, disallow=0) to change the default keybindings
-let g:jupyter_mapkeys = 1
+let g:jupyter_mapkeys = 0
 
 " REPL for Clojure
 Plugin 'tpope/vim-fireplace'
@@ -179,32 +179,32 @@ set shiftwidth=2
 " Also switch on highlighting the last used search pattern.
 " if t_Co(number of color) is more than 2
 if &t_Co > 2 || has("gui_running")
-    syntax on
-    " When there is a previous search pattern, highlight all its matches.
-    set hlsearch
+  syntax on
+  " When there is a previous search pattern, highlight all its matches.
+  set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-    " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
-    " 'cindent' is on in C files, etc.
-    " Also load indent files, to automatically do language-dependent indenting.
-    filetype plugin indent on
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
 
-    " For all text files set 'textwidth' to 79 characters.
-    autocmd FileType text setlocal textwidth=79
+  " For all text files set 'textwidth' to 79 characters.
+  autocmd FileType text setlocal textwidth=79
 
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    " See :h 05.2
-    " !~# regrexp doesn't match with case
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") &&
-                \ &ft !~# 'commit'
-                \ |  exe "normal g`\""
-                \ | endif
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " See :h 05.2
+  " !~# regrexp doesn't match with case
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") &&
+        \ &ft !~# 'commit'
+        \ |  exe "normal g`\""
+        \ | endif
 endif " has("autocmd")
 
 filetype plugin on
@@ -241,7 +241,7 @@ set shiftround
 set showmatch matchtime=3
 
 autocmd BufNewFile,BufRead *.js, *.html, *.css
-            \   set tabstop=2 softtabstop=2 shiftwidth=2
+      \   set tabstop=2 softtabstop=2 shiftwidth=2
 
 "Flagging Unnecessary Whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
@@ -308,20 +308,37 @@ nnoremap <leader>su !xrdb $HOME/.Xresources<CR>
 :autocmd FileType html :iabbrev <buffer> --- &mdash;
 
 augroup filetype_python
-    " prevent defining sample autocmds multiple times
-    autocmd!
-    " comment line for python
-    autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
-    autocmd FileType python :iabbrev <buffer> iff if:<left>
-    autocmd FileType python :iabbrev <buffer> rt return<right>
-    " disable return input for training shortcut
-    autocmd FileType python :iabbrev <buffer> return NOPENOPENOPE
-    autocmd FileType python let g:black_linelength = 79
-    autocmd FileType python setlocal foldmethod=indent
-    autocmd BufNewFile,BufRead *.py
-                \   set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
-                \   expandtab autoindent fileformat=unix |
-                \   let python_highlight_all=1
+  " prevent defining sample autocmds multiple times
+  autocmd!
+  " comment line for python
+  autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+  autocmd FileType python :iabbrev <buffer> iff if:<left>
+  autocmd FileType python :iabbrev <buffer> rt return<right>
+  " disable return input for training shortcut
+  autocmd FileType python :iabbrev <buffer> return NOPENOPENOPE
+  autocmd FileType python let g:black_linelength = 79
+  autocmd FileType python setlocal foldmethod=indent
+  autocmd BufNewFile,BufRead *.py
+        \   set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+        \   expandtab autoindent fileformat=unix |
+        \   let python_highlight_all=1
+  " define area of inside of parenthesis for movement
+  autocmd FileType python onoremap p i(
+  " define area of return block for movement
+  " :db use this to delete statements until return
+  autocmd FileType python onoremap b /return<cr>
+  " define upcomming(f) area with perethsis ()
+  autocmd FileType python onoremap in( :<c-u>normal! f(vi(<cr>
+  " define upcomming(f) area with curly branket {}
+  autocmd FileType python onoremap in{ :<c-u>normal! f{vi{<cr>
+  " define previous(F) area with perethsis ()
+  autocmd FileType python onoremap il( :<c-u>normal! F)vi(<cr>
+  " define previous(F) area with curly branket {}
+  autocmd FileType python onoremap il{ :<c-u>normal! F}vi}<cr>
+  " For jupyter-vim package: key binding to execute range of codes
+  " and put cursor to last position of virtual selection afterward.
+  autocmd FileType python vnoremap <buffer> <silent>
+        \ <localleader>e :JupyterSendRange<cr> :<c-u>normal! `><cr>
 augroup END
 
 
