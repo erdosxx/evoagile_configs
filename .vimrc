@@ -1,7 +1,7 @@
 " Disable file type detection for Vundle package manager
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
-  finish
+    finish
 endif
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -49,7 +49,6 @@ let g:fortran_fold=1
 let g:clojure_fold = 1
 let g:baan_fold=1
 autocmd FileType c,cpp setlocal foldmethod=syntax
-autocmd FileType python setlocal foldmethod=indent
 
 " This indentation script for python tries to match more closely what is
 " suggested in PEP 8
@@ -77,10 +76,10 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 if has('gui_running')
-  set background=dark
-  colorscheme solarized
+    set background=dark
+    colorscheme solarized
 else
-  colorscheme zenburn
+    colorscheme zenburn
 endif
 
 " To open file window :NERDTree
@@ -115,11 +114,10 @@ Plugin 'wincent/terminus'
 
 " Format code with one button press (or automatically on save)
 Plugin 'vim-autoformat/vim-autoformat'
-noremap <F3> :Autoformat<CR>
+noremap <F9> :Autoformat<CR>
 autocmd BufWrite * :Autoformat
-autocmd FileType python let g:black_linelength = 79
-Plugin 'psf/black'
-nnoremap <F9> :Black<CR>
+" Plugin 'psf/black'
+" jnnoremap <F9> :Black<CR>
 " autocmd BufWritePre *.py execute ':Black'
 
 Plugin 'jupyter-vim/jupyter-vim'
@@ -181,29 +179,32 @@ set shiftwidth=2
 " Also switch on highlighting the last used search pattern.
 " if t_Co(number of color) is more than 2
 if &t_Co > 2 || has("gui_running")
-  syntax on
-  " When there is a previous search pattern, highlight all its matches.
-  set hlsearch
+    syntax on
+    " When there is a previous search pattern, highlight all its matches.
+    set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+    " Enable file type detection.
+    " Use the default filetype settings, so that mail gets 'tw' set to 72,
+    " 'cindent' is on in C files, etc.
+    " Also load indent files, to automatically do language-dependent indenting.
+    filetype plugin indent on
 
-  " For all text files set 'textwidth' to 79 characters.
-  autocmd FileType text setlocal textwidth=79
+    " For all text files set 'textwidth' to 79 characters.
+    autocmd FileType text setlocal textwidth=79
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " See :h 05.2
+    " !~# regrexp doesn't match with case
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") &&
+                \ &ft !~# 'commit'
+                \ |  exe "normal g`\""
+                \ | endif
 endif " has("autocmd")
 
 filetype plugin on
@@ -214,7 +215,7 @@ set grepprg=grep\ -nH\ $*
 
 " When on, splitting a window will put the new window below the current one.
 set splitbelow
-" When on, splitting a window will put the new window right of the current one.
+" When on, splitting a window' will put the new window right of the current one.
 set splitright
 
 " Enable folding
@@ -239,12 +240,8 @@ set shiftround
 " See: https://vimtricks.com/p/vimtrick-highlight-matching-bracket/
 set showmatch matchtime=3
 
-autocmd BufNewFile,BufRead *.py
-      \   set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
-      \   expandtab autoindent fileformat=unix |
-      \   let python_highlight_all=1
 autocmd BufNewFile,BufRead *.js, *.html, *.css
-      \   set tabstop=2 softtabstop=2 shiftwidth=2
+            \   set tabstop=2 softtabstop=2 shiftwidth=2
 
 "Flagging Unnecessary Whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
@@ -294,8 +291,40 @@ nnoremap <leader>su !xrdb $HOME/.Xresources<CR>
 :iabbrev ssig ----------<cr>Norel Oh<cr>norel.evoagile@gmail.com
 " Add " to start and end of word. Ex) word -> "word"
 :nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+:vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
 " Add ' to start and end of word. Ex) word -> 'word'
 :nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+:vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
+" Go to the beginning of the current line
+:nnoremap H ^
+" Go to the end of the current line
+:nnoremap L $
+" jk for escape from insert mode
+:inoremap jk <esc>
+" disable <esc> to escape from insert mode
+:inoremap <esc> <nop>
+:autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+:autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
+:autocmd FileType html :iabbrev <buffer> --- &mdash;
+
+augroup filetype_python
+    " prevent defining sample autocmds multiple times
+    autocmd!
+    " comment line for python
+    autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+    autocmd FileType python :iabbrev <buffer> iff if:<left>
+    autocmd FileType python :iabbrev <buffer> rt return<right>
+    " disable return input for training shortcut
+    autocmd FileType python :iabbrev <buffer> return NOPENOPENOPE
+    autocmd FileType python let g:black_linelength = 79
+    autocmd FileType python setlocal foldmethod=indent
+    autocmd BufNewFile,BufRead *.py
+                \   set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+                \   expandtab autoindent fileformat=unix |
+                \   let python_highlight_all=1
+augroup END
+
+
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
