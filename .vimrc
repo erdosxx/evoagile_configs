@@ -7,26 +7,28 @@ endif
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-filetype off                  " required
+
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
 
 " following setup is accroding to this
 " https://realpython.com/vim-and-python-a-match-made-in-heaven/
-" ------------- Vundle Plugins --------------
-" set the runtime path to include Vundle and initialize
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" ------------- Vim-Plug Plugins --------------
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
-
-Plugin 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold'
 " Preview docstring in fold text
 let g:SimpylFold_docstring_preview=1
 
-Plugin 'Konfekt/FastFold'
+Plug 'Konfekt/FastFold'
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook = 1
 let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
@@ -52,15 +54,18 @@ autocmd FileType c,cpp setlocal foldmethod=syntax
 
 " This indentation script for python tries to match more closely what is
 " suggested in PEP 8
-Plugin 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/indentpython.vim'
 
-Plugin 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', {'do': function('BuildYCM')}
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" generate a .ycm_extra_conf.py file for use with YouCompleteMe
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
 " ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking
 " and semantic errors)
-Plugin 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 " https://vi.stackexchange.com/questions/2350/how-to-map-alt-key
@@ -71,10 +76,10 @@ nmap <silent> <M-k> <Plug>(ale_previous_wrap)
 nmap <silent> <M-j> <Plug>(ale_next_wrap)
 
 " To run flake8 lint press <F7>
-Plugin 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
 if has('gui_running')
   set background=dark
   colorscheme solarized
@@ -83,7 +88,7 @@ else
 endif
 
 " To open file window :NERDTree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -91,17 +96,17 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim
 " <c-p> or :CtrlP to start
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Fugitive is the premier Vim plugin for Git.
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Extend fugitive.vim to support Bitbucket URLs in :GBrowse
-Plugin 'tommcdo/vim-fubitive'
+Plug 'tommcdo/vim-fubitive'
 " Extend fugitive.vim to support Github URLs in :GBrowse
-Plugin 'tpope/vim-rhubarb'
+Plug 'tpope/vim-rhubarb'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='badwolf'
 "let g:airline_theme='zenburn'
 let g:airline_powerline_fonts = 1
@@ -110,34 +115,34 @@ let g:airline#extensions#tabline#enabled = 1
 " let g:zenburn_high_Contrast = 1
 
 " Cursor shape change in insert and replace mode
-Plugin 'wincent/terminus'
+Plug 'wincent/terminus'
 
 " Format code with one button press (or automatically on save)
-Plugin 'vim-autoformat/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 noremap <F9> :Autoformat<CR>
 autocmd BufWrite * :Autoformat
-" Plugin 'psf/black'
+" Plug 'psf/black'
 " jnnoremap <F9> :Black<CR>
 " autocmd BufWritePre *.py execute ':Black'
 
-Plugin 'jupyter-vim/jupyter-vim'
+Plug 'jupyter-vim/jupyter-vim'
 " to allow(=1, disallow=0) to change the default keybindings
 let g:jupyter_mapkeys = 0
 
 " REPL for Clojure
-Plugin 'tpope/vim-fireplace'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Static Vim support for Leiningen, Boot, and the Clojure CLI.
-Plugin 'tpope/vim-salve'
+Plug 'tpope/vim-salve', { 'for': 'clojure' }
 
 " showing diff level of parentheses in diff color
-Plugin 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
 
 " vim plugin for cljfmt, the code formatting tool for Clojure(Script)
-Plugin 'venantius/vim-cljfmt'
+Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 
 " filetype and syntax plugin for LaTeX files
-Plugin 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
@@ -145,14 +150,13 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 
 " ultimate solution for snippets in Vim
-Plugin 'sirver/ultisnips'
+Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 " ---------------------------------------------------
 
 " for switching between a dark and light Solarized theme
