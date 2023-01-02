@@ -286,8 +286,8 @@ nnoremap <leader>su !xrdb $HOME/.Xresources<CR>
 :iabbrev tehn then
 " @@ -> norel.evoagile@gmail.com
 :iabbrev @@ norel.evoagile@gmail.com
-" ccopy -> Copyright 2022 Norel Oh, all rights reserved.
-:iabbrev ccopy Copyright 2022 Norel Oh, all rights reserved.
+" ccopy -> Copyright 2023 Norel Oh, all rights reserved.
+:iabbrev ccopy Copyright 2023 Norel Oh, all rights reserved.
 " ssig ->
 " ----------
 " Norel Oh
@@ -310,6 +310,10 @@ nnoremap <leader>su !xrdb $HOME/.Xresources<CR>
 :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 :autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
 :autocmd FileType html :iabbrev <buffer> --- &mdash;
+
+" cin@: change email address in backword. See help: pattern-overview
+:onoremap in@ :<c-u>execute
+      \ "normal! ?\\<\\S\\+@\\w\\+\\.[a-zA-Z]\\{2,3}\\>\r:nohlsearch\rvg_"<cr>
 
 augroup filetype_python
   " prevent defining sample autocmds multiple times
@@ -343,6 +347,17 @@ augroup filetype_python
   " and put cursor to last position of virtual selection afterward.
   autocmd FileType python vnoremap <buffer> <silent>
         \ <localleader>e :JupyterSendRange<cr> :<c-u>normal! `><cr>
+augroup END
+
+augroup filetype_markdown
+  " prevent defining sample autocmds multiple times
+  autocmd!
+  " backword search(?) to replace title with ==... or --...
+  autocmd FileType markdown onoremap <buffer> ih :<c-u>execute
+        \ "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rkvg_"<cr>
+  " backword search(?) to replace title and underline with ==... or --...
+  autocmd FileType markdown onoremap <buffer> ah :<c-u>execute
+        \ "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<cr>
 augroup END
 
 
