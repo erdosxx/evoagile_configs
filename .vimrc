@@ -20,7 +20,7 @@ endfunction
 
 " following setup is accroding to this
 " https://realpython.com/vim-and-python-a-match-made-in-heaven/
-" ------------- Vim-Plug Plugins --------------
+" ------------- Vim-Plug Plugins -------------------- {{{
 
 call plug#begin()
 
@@ -157,8 +157,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " All of your Plugins must be added before the following line
 call plug#end()
-" ---------------------------------------------------
+" }}} End Plugins -----------------------------------
 
+" --------------- Basic Settings -------------------- {{{
 " for switching between a dark and light Solarized theme
 call togglebg#map("<F5>")
 
@@ -253,8 +254,9 @@ autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " cut and paste from or to other application
 set clipboard=unnamed
+" }}} End Basic Settings ----------------------------
 
-" ------------- Mapping --------------
+" -------------------- Mapping ---------------------- {{{
 "
 :let mapleader = "-"
 :let maplocalleader = "\\"
@@ -363,6 +365,11 @@ augroup filetype_markdown
   " Not work because of Airline
 augroup END
 
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -385,3 +392,4 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
 
 " Enable folding with the spacebar
 nnoremap <space> za
+"}}} end Mapping ------------------------------------
