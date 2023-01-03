@@ -306,7 +306,9 @@ nnoremap <leader>su !xrdb $HOME/.Xresources<CR>
 " jk for escape from insert mode
 :inoremap jk <esc>
 " disable <esc> to escape from insert mode
-:inoremap <esc> <nop>
+" With esc nop, YouCompleteMe with tab and code folding do not work.
+" So I disable it.
+" :inoremap <esc> <nop>
 :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
 :autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
 :autocmd FileType html :iabbrev <buffer> --- &mdash;
@@ -358,6 +360,7 @@ augroup filetype_markdown
   " backword search(?) to replace title and underline with ==... or --...
   autocmd FileType markdown onoremap <buffer> ah :<c-u>execute
         \ "normal! ?^\\(==\\+\\\\|--\\+\\)$\r:nohlsearch\rg_vk0"<cr>
+  " Not work because of Airline
 augroup END
 
 
