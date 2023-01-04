@@ -1,35 +1,13 @@
-#exec dbus-launch --exit-with-session xfce4-session
-#LANG='ko_KR.UTF-8' scim -d
-#export XMODIFIERS=@im=SCIM
-#export GTK_IM_MODULE=hangul2
-
-#eval "$(dbus-launch --sh-syntax --exit-with-session)"
 export GTK_IM_MODULE=uim
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
-#export XMODIFIERS="@im=fcitx"
-#export QT_IM_MODULE=fcitx
-#export GTK_IM_MODULE=fcitx
-#
-#export GTK_IM_MODULE=uim
-#export QT_IM_MODULE=uim
-#export XMODIFIERS="@im=uim"
-
-#uim-xim &
-
 if ! pgrep -x "imwheel" > /dev/null
 then
-	imwheel	
+imwheel
 fi
 
 if ! pgrep -x "ibus-daemon" > /dev/null
 then
 ibus-daemon -drx
 fi
-
-#export XMODIFIERS="@im=scim"
-#export GTK_IM_MODULES="scim"
-#export QT_IM_MODULES="scim"
-#/usr/bin/scim -d
-# export QT_DEVICE_PIXEL_RATIO=2
