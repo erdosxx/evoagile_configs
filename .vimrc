@@ -120,12 +120,10 @@ Plug 'wincent/terminus'
 " Format code with one button press (or automatically on save)
 Plug 'vim-autoformat/vim-autoformat'
 noremap <F9> :Autoformat<CR>
-autocmd BufWrite * :Autoformat
-" Plug 'psf/black'
-" jnnoremap <F9> :Black<CR>
-" autocmd BufWritePre *.py execute ':Black'
+" autocmd BufWrite * :Autoformat
+autocmd BufWrite * if &ft != "julia" | :Autoformat | endif
 
-Plug 'jupyter-vim/jupyter-vim'
+Plug 'jupyter-vim/jupyter-vim', { 'for': ['python', 'julia'] }
 " to allow(=1, disallow=0) to change the default keybindings
 let g:jupyter_mapkeys = 0
 
@@ -154,6 +152,15 @@ Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" Make vim to communicate with REPL
+Plug 'jpalardy/vim-slime'
+" Julia formatter
+Plug 'kdheepak/JuliaFormatter.vim'
+nnoremap <localleader>jf :JuliaFormatterFormat<CR>
+vnoremap <localleader>jf :JuliaFormatterFormat<CR>
+" Latex-to-Unicode substitutions for Julia
+Plug 'JuliaEditorSupport/julia-vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -272,7 +279,7 @@ noremap <leader>_ :m-2<CR>
 noremap <leader>- ddp
 " change word to upper case in insert mode.
 inoremap <leader><c-u> <Esc>lviwUwi
-" change word to upper case in insert mode.
+" change word to upper case in normal mode.
 noremap <leader><c-u> viwUw
 " Edit $MYVIMRC in vertical split window
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>

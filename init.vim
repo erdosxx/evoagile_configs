@@ -1,3 +1,4 @@
+" Ref: https://numbersmithy.com/migrating-from-vim-to-neovim-at-the-beginning-of-2022/
 " ------------- Vim-Plug Plugins -------------------- {{{
 
 " auto install vim-plug and plugins:
@@ -52,7 +53,7 @@ Plug 'vim-scripts/indentpython.vim'
 " map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " generate a .ycm_extra_conf.py file for use with YouCompleteMe
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 " ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking
 " and semantic errors)
@@ -65,18 +66,15 @@ let g:airline#extensions#ale#enabled = 1
 " execute "set <M-k>=\ek"
 " nmap <silent> <M-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <M-j> <Plug>(ale_next_wrap)
+" <esc> = ALT
+nmap <silent> <esc>k <Plug>(ale_previous_wrap)
+nmap <silent> <esc>j <Plug>(ale_next_wrap)
 
 " To run flake8 lint press <F7>
 Plug 'nvie/vim-flake8'
 
-" Plug 'jnurmine/Zenburn'
-" Plug 'altercation/vim-colors-solarized'
-" if has('gui_running')
-"   set background=dark
-"   colorscheme solarized
-" else
-"   colorscheme zenburn
-" endif
+Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
 
 " To open file window :NERDTree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -114,9 +112,9 @@ noremap <F9> :Autoformat<CR>
 " autocmd BufWrite * :Autoformat
 autocmd BufWrite * if &ft != "julia" | :Autoformat | endif
 
-Plug 'jupyter-vim/jupyter-vim', { 'for': ['python', 'julia'] }
+" Plug 'jupyter-vim/jupyter-vim', { 'for': ['python', 'julia'] }
 " to allow(=1, disallow=0) to change the default keybindings
-let g:jupyter_mapkeys = 0
+" let g:jupyter_mapkeys = 0
 
 " REPL for Clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -124,8 +122,8 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-salve', { 'for': 'clojure' }
 
 " showing diff level of parentheses in diff color
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
+" Plug 'luochen1990/rainbow'
+" let g:rainbow_active = 1
 
 " vim plugin for cljfmt, the code formatting tool for Clojure(Script)
 Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
@@ -153,6 +151,15 @@ vnoremap <localleader>jf :JuliaFormatterFormat<CR>
 " Latex-to-Unicode substitutions for Julia
 Plug 'JuliaEditorSupport/julia-vim'
 
+" support syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" support auto-completion
+Plug 'neovim/nvim-lspconfig'
+
+" color theme
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
 call plug#end()
 call plug#helptags()
 
@@ -163,8 +170,68 @@ endif
 unlet plug_install
 " }}} End Plugins -----------------------------------
 
+" --------------- Basic Settings -------------------- {{{
+
+colorscheme tokyonight-night
+
+lua <<EOF
+require'lspconfig'.pyright.setup{}
+EOF
+
+" treesitter setting
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "python",
+    "fortran",
+    "bash",
+    "c",
+    "cpp",
+    "bibtex",
+    "latex",
+    "julia",
+    "lua",
+  },
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+  -- List of parsers to ignore installing
+  ignore_install = { "haskell" },
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+    -- list of language that will be disabled
+    disable = { "" },
+    -- Setting this to true will run `:h syntax` and
+    -- tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax'
+    -- being enabled (like for indentation).
+    -- Using this option may slow down your editor,
+    -- and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    -- dont enable this, messes up python indentation
+    enable = false,
+    disable = {},
+  },
+}
+EOF
+
+" Folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+
 " for switching between a dark and light Solarized theme
-" call togglebg#map("<F5>")
+call togglebg#map("<F5>")
+
+" if has('gui_running')
+"     set background=dark
+"     colorscheme solarized
+" else
+"     colorscheme zenburn
+" endif
 
 " allow backspacing over everything in insert mode
 " Ref: https://til.hashrocket.com/posts/f5531b6da0-backspace-options
@@ -220,6 +287,16 @@ filetype plugin on
 set grepprg=grep\ -nH\ $*
 
 :setlocal spell spelllang=en
+" change lighlight to underline for wrong spell words.
+" Ref: https://stackoverflow.com/questions/45502128/vim-spell-highlighting
+" highlight clear SpellBad
+" highlight SpellBad cterm=underline
+" highlight clear SpellRare
+" highlight SpellRare cterm=underline
+" highlight clear SpellCap
+" highlight SpellCap cterm=underline
+" highlight clear SpellLocal
+" highlight SpellLocal cterm=underline
 
 " When on, splitting a window will put the new window below the current one.
 set splitbelow
@@ -352,8 +429,8 @@ augroup filetype_python
   autocmd FileType python onoremap il{ :<c-u>normal! F}vi}<cr>
   " For jupyter-vim package: key binding to execute range of codes
   " and put cursor to last position of virtual selection afterward.
-  autocmd FileType python vnoremap <buffer> <silent>
-        \ <localleader>e :JupyterSendRange<cr> :<c-u>normal! `><cr>
+  " autocmd FileType python vnoremap <buffer> <silent>
+  "       \ <localleader>e :JupyterSendRange<cr> :<c-u>normal! `><cr>
 augroup END
 
 augroup filetype_markdown
