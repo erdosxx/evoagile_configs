@@ -20,9 +20,9 @@ parse_git_branch() {
 
 export PS1="[\[\e[1;32m\]\u\[\e[m\]@\[\e[1;35m\]\h\[\e[1;34m\]:\w\[\033[33m\]\$(parse_git_branch)\[\e[m\]]$ "
 
-export PATH="/home/gentoo/.local/bin:/home/gentoo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
-export GDRIVE_PATH="/home/gentoo/gdrive/"
+export GDRIVE_PATH="$HOME/gdrive/"
 
 alias venv="source venv/bin/activate"
 alias djy="ssh aidongju -Y"
@@ -35,3 +35,7 @@ alias vim="vim -u $MYVIMRC"
 export MYURXVTRC="$HOME/.config/urxvt/urxvt.config"
 alias rxs="xrdb $HOME/.Xresources"
 alias ra="ranger"
+
+# Use fish in place of bash
+# keep this line at the bottom of ~/.bashrc
+[ -x /bin/bash ] && SHELL=/bin/fish exec fish
