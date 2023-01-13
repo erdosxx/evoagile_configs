@@ -1,7 +1,7 @@
 bass source /etc/profile
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    fish_logo
+    # fish_logo
 end
 
 function fish_user_key_bindings
