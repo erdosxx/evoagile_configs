@@ -20,7 +20,7 @@ plug "zap-zsh/exa"
 plug "zsh-users/zsh-syntax-highlighting"
 
 # keybinds
-bindkey '^ ' autosuggest-accept
+bindkey '^f' autosuggest-accept
 
 if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Visual Studio Dark+\""
