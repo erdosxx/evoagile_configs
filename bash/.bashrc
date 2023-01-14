@@ -28,7 +28,7 @@ alias venv="source venv/bin/activate"
 alias djy="ssh aidongju -Y"
 alias poy="ssh polaris -Y"
 
-export MYVIMRC="$HOME/localgit/evoagile_configs/.vimrc"
+export MYVIMRC="$HOME/localgit/evoagile_configs/vim/.vimrc"
 alias vi="vim -u $MYVIMRC"
 alias vim="vim -u $MYVIMRC"
 
