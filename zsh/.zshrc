@@ -1,5 +1,4 @@
 #!/bin/sh
-HOME=/home/gentoo
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
 # history
