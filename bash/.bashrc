@@ -38,4 +38,4 @@ alias ra="ranger"
 
 # Use fish in place of bash
 # keep this line at the bottom of ~/.bashrc
-[ -x /bin/bash ] && SHELL=/bin/fish exec fish
+# [ -x /bin/bash ] && SHELL=/bin/fish exec fish
