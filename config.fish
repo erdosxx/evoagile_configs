@@ -40,6 +40,7 @@ set -gx MYNVIMLUARC "$HOME/.config/nvim/init.lua"
 set -gx MYURXVTRC "$HOME/.config/urxvt/urxvt.config"
 
 fish_add_path --move --prepend ~/.local/bin ~/.cargo/bin ~/bin ~/go/bin
+fish_add_path --move --prepend ~/node_modules/.bin
 
 abbr venv "source venv/bin/activate.fish"
 abbr djy "ssh aidongju -Y"
