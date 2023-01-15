@@ -2,7 +2,6 @@
 alias j='z'
 alias f='zi'
 alias g='lazygit'
-alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias nvimrc='nvim ~/.config/nvim/'
 
 # Colorize grep output (good for log files)
@@ -26,7 +25,7 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
-alias venv="source venv/bin/activate.fish"
+alias venv="source venv/bin/activate"
 alias djy="ssh aidongju -Y"
 alias poy="ssh polaris -Y"
 
