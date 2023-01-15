@@ -13,6 +13,12 @@ export MYNVIMRC="$HOME/localgit/evoagile_configs/init.vim"
 export MYNVIMLUARC="$HOME/.config/nvim/init.lua"
 export MYURXVTRC="$HOME/.config/urxvt/urxvt.config"
 
+# XDG Paths
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_RUNTIME_DIR=/tmp/"runtime-$(whoami)"
+
 export EDITOR="nvim"
 export TERMINAL="urxvt"
 export BROWSER="chromium"
