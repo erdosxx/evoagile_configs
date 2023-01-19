@@ -34,3 +34,5 @@ alias vim="vim -u $MYVIMRC"
 
 alias rxs="xrdb $HOME/.Xresources"
 alias ra="ranger"
+
+alias dict="mdic.sh"
