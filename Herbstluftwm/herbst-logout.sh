@@ -1,0 +1,1 @@
+/home/gentoo/localgit/scripts/dmenu/herbst-logout.sh
