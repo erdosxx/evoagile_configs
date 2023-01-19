@@ -8,7 +8,7 @@ include-file = $HOME/.config/herbstluftwm/polybar_themes/theme.ini
 monitor                             = ${env:MONITOR}
 offset-y                            = 0
 width                               = 100%
-height                              = 18
+height                              = 26
 radius                              = 0
 fixed-center                        = true
 bottom                              = false
@@ -25,15 +25,15 @@ padding-right                       = 0
 module-margin-right                 = 0.25
 module-margin-left                  = 0
 
-font-0                              = FantasqueSansMono:style=Italic:pixelsize=12;1
-font-1                              = unifont:fontformat=truetype:size=12:antialias=false;0
-font-2                              = siji:pixelsize=10;1
-font-3                              = Font Awesome:style=Regular:pixelsize=10;1
-font-4                              = Font Awesome:style=Solid:pixelsize=9;1
-font-5                              = Font Awesome:pixelsize=8;1
-font-6                              = Font Awesome:style=Regular:pixelsize=10;1
-font-7                              = FantasqueSansMono:style=Bold:size=12
-font-8                              = Font Awesome:style=Solid:pixelsize=10;1
+font-0                              = Inconsolata Nerd Font Mono:style=Regular:pixelsize=16;1
+font-1                              = GNU Unifont:fontformat=truetype:size=12:antialias=false;0
+font-2                              = Siji:pixelsize=10;1
+font-3                              = Inconsolata Nerd Font Mono:style=Regular:pixelsize=20;1
+font-4                              = Font Awesome 6 Free Solid:style=Solid:pixelsize=9;1
+font-5                              = Inconsolata Nerd Font Mono:pixelsize=20;1
+font-6                              = Inconsolata Nerd Font Mono:style=Regular:pixelsize=20;1
+font-7                              = Inconsolata Nerd Font Mono:style=Bold:size=16
+font-8                              = Inconsolata Nerd Font Mono:pixelsize=20;1
 
 modules-left                        = logo ewmh line-endl xwindow
 modules-center                      = 
@@ -50,23 +50,28 @@ cursor-scroll                       = ns-resize
 [module/xwindow]
 type                                = internal/xwindow
 label                               = "%title:0:30:...%"
-label-foreground                    = #5f875f
-label-background                    = ${colors.background}
+label-foreground                    = #80ff00
+; label-foreground                    = #ffffff
+label-background                    = #474747
+background                          = #474747
+; label-background                    = ${colors.background}
 format-prefix                       = "  "
-format-prefix-background            = ${colors.background}
-format-prefix-foreground            = ${colors.foreground-alt5}
+format-prefix-foreground            = #ffb266
+format-prefix-background            = #474747
+; format-prefix-background            = ${colors.background}
+; format-prefix-foreground            = ${colors.foreground-alt5}
 
-[module/ytube]
-inherit                             = powerline-templates/right-to-left-item-with-separator
-background                          = ${colors.foreground-alt4}
-background-next                     = #474747
-separator                           = #000000
-type                                = custom/script
-exec                                = ytsubs.sh
-interval                            = 3.0
-label-background                    = ${colors.foreground-alt4}
-label-foreground                    = #262626
-label                               = "  %output%"
+; [module/ytube]
+; inherit                             = powerline-templates/right-to-left-item-with-separator
+; background                          = ${colors.foreground-alt4}
+; background-next                     = #474747
+; separator                           = #000000
+; type                                = custom/script
+; exec                                = ytsubs.sh
+; interval                            = 3.0
+; label-background                    = ${colors.foreground-alt4}
+; label-foreground                    = #262626
+; label                               = "  %output%"
 
 [module/wlan]
 inherit                             = powerline-templates/right-to-left-item-with-separator
@@ -74,7 +79,7 @@ background                          = ${colors.foreground-alt3}
 background-next                     = #474747
 separator                           = #000000
 type                                = custom/script
-exec                                = web
+exec                                = ~/.local/bin/web
 interval                            = 3.0
 label-background                    = ${colors.foreground-alt3}
 label                               = "  %output%"
@@ -90,7 +95,7 @@ ramp-signal-foreground              = #739187
 
 [module/polywins]
 type = custom/script
-exec = ~/.config/polybar/scripts/polywins.sh 2>/dev/null
+exec = ~/.local/bin/polywins.sh 2>/dev/null
 format = <label>
 label = %output%
 label-padding = 1
@@ -108,7 +113,7 @@ interval                            = 5
 exec                                = date +" %Y-%m-%d (%I:%M)"
 label                               = "  %output% "
 label-background                    = #1e1e1e
-label-foreground                    = ${colors.foreground-alt}
+label-foreground                    = ${colors.foreground-alt2}
 click-left                          = scratch Todo
 
 [module/pulseaudio]
@@ -125,18 +130,18 @@ label-muted                         = " MUTE "
 label-muted-foreground              = ${colors.foreground-alt3}
 label-muted-background              = #2a2a2a
 
-[module/mail]
-inherit                             = powerline-templates/right-to-left-item-with-separator
-background                          = #2a2a2a
-background-next                     = #1e1e1e
-separator                           = #000000
-type                                = custom/script
-exec                                = mailcheck.sh
-interval                            = 3600
-label                               = " %output% "
-label-foreground                    = ${colors.foreground}
-label-background                    = #2a2a2a
-click-left                          = scratch Mail
+; [module/mail]
+; inherit                             = powerline-templates/right-to-left-item-with-separator
+; background                          = #2a2a2a
+; background-next                     = #1e1e1e
+; separator                           = #000000
+; type                                = custom/script
+; exec                                = mailcheck.sh
+; interval                            = 3600
+; label                               = " %output% "
+; label-foreground                    = ${colors.foreground}
+; label-background                    = #2a2a2a
+; click-left                          = scratch Mail
 
 [module/batt]
 inherit = powerline-templates/right-to-left-item-with-separator
@@ -144,7 +149,7 @@ background = #474747
 background-next = #2a2a2a
 separator = #000000
 type = custom/script
-exec = battery
+exec = ~/.local/bin/battery
 interval = 3.0
 label = " %output% "
 label-background = #474747
@@ -155,7 +160,7 @@ background = #474747
 background-next = #2a2a2a
 separator = #000000
 type = custom/script
-exec = vol
+exec = ~/.local/bin/vol
 interval = 3.0
 label = "  %output% "
 label-background = #474747
@@ -220,26 +225,26 @@ label-empty-padding = 2
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
-[module/pacman-updates]
-inherit = powerline-templates/right-to-left-item-with-separator
-background = #1e1e1e
-background-next = #000000
-separator = #000000
-type = custom/script
-exec = xbps-install -nuM | wc -l
-interval = 1000
-label = "   %output% "
-label-foreground = ${colors.foreground}
-label-background = #1e1e1e
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-click-left = notify-send --expire-time=9000 "$(sudo xbps-install -Sun | awk {'print $1'})"
+; [module/pacman-updates]
+; inherit = powerline-templates/right-to-left-item-with-separator
+; background = #1e1e1e
+; background-next = #000000
+; separator = #000000
+; type = custom/script
+; exec = xbps-install -nuM | wc -l
+; interval = 1000
+; label = "   %output% "
+; label-foreground = ${colors.foreground}
+; label-background = #1e1e1e
+; format-foreground = ${colors.foreground}
+; format-background = ${colors.background}
+; click-left = notify-send --expire-time=9000 "$(sudo xbps-install -Sun | awk {'print $1'})"
 
-[module/updicon]
-type = custom/script
-exec = ~/.config/herbstluftwm/updicon.sh
-tail = true
-interval = 10
+; [module/updicon]
+; type = custom/script
+; exec = ~/.config/herbstluftwm/updicon.sh
+; tail = true
+; interval = 10
 
 [module/logo]
 inherit            = powerline-templates/left-to-right-item
@@ -248,9 +253,10 @@ separator          = #000000
 type               = custom/text
 content-background = #000000
 content-foreground = ${colors.foreground}
-content            = "  -VOID- "
+content            = " "
 content-font       = 8
-click-left         = kitty -T launch.sh -e launch.sh
+click-left         = urxvt -title launch.sh -e ~/.local/bin/launch.sh
+click-right         = urxvt -title logout -e ~/.local/bin/herbst-logout.sh
 
 [module/line-end]
 inherit = powerline-modules/right-to-left-end-of-line-separator
