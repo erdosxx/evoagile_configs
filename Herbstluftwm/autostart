@@ -9,6 +9,9 @@ hc emit_hook reload
 # AUTOSTART #
 #-----------#
 
+# Screenshots
+flameshot &
+
 picom --experimental-backends &
 xfce4-power-manager &
 # to run urxvt properly, we need to read .Xresources. 
@@ -19,6 +22,7 @@ xrdb $HOME/.Xresources &
 ./panel.sh
 nm-applet &
 /usr/bin/gnome-keyring-daemon --start --components=secrets
+
 batticon(){
     batt="$(pidof cbatticon)"
     if [[ "$batt" -lt 1 ]];
@@ -30,6 +34,7 @@ batticon(){
     fi
 }
 # Palse audio control applet
+# pa-applet does not work.
 volicon(){
     vol="$(pidof pa-applet)"
     if [[ "$vol" -lt 1 ]];
@@ -40,7 +45,7 @@ volicon(){
         $HOME/.config/bin/pa-applet &
     fi
 }
-volicon
+# volicon
 batticon
 
 #$HOME/.config/herbstluftwm/xmobar && herbstclient use_index 1

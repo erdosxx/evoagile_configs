@@ -9,10 +9,12 @@ hc keyunbind --all
 
 # System controls #
 #-----------------#
-hc keybind $Mod-Control-c spawn urxvt --title logout -e ~/.local/bin/herbst-logout.sh
+hc keybind $Mod-Control-c spawn urxvt -title logout -e ~/.local/bin/herbst-logout.sh
 hc keybind $Mod-Control-r reload
 hc keybind $Mod-Shift-q close
 hc keybind $Mod-Shift-Return spawn "${TERMINAL:-urxvt}" # 
+# lock screen
+hc keybind $Mod-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
 
 # multimedia #
 #------------#
@@ -41,7 +43,8 @@ hc keybind $Mod-Shift-t spawn spotify
 # install to-do for Void or Debian linux
 # hc keybind $Mod-Shift-t spawn ~/.local/bin/scratch Todo
 hc keybind $Mod-Shift-w spawn urxvt -title windows -e ~/.local/bin/windows.sh
-hc keybind $Mod-a spawn alacritty
+hc keybind $Mod-a spawn urxvt
+hc keybind $Mod-t spawn alacritty
 hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
