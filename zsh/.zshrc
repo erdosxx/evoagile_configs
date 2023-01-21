@@ -27,3 +27,6 @@ if command -v bat &> /dev/null; then
   alias cat="bat -pp --theme \"Visual Studio Dark+\""
   alias catt="bat --theme \"Visual Studio Dark+\""
 fi
+
+# Set UK key board layout
+setxkbmap -layout gb -variant "" -model latitude
