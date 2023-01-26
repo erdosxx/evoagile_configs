@@ -26,13 +26,15 @@ export BROWSER="chromium"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
-export PATH="$HOME/.local/bin":$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.local/share/go/bin:$HOME/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
-export PATH=$HOME/bin:$PATH
-export PATH="$HOME/node_modules/.bin":$PATH
-#export PATH="$PATH:./node_modules/.bin"
+
+export PATH=$PATH:"$HOME/.local/bin"
+export PATH=$PATH:"$HOME/bin"
+export PATH=$PATH:"$HOME/.cargo/bin"
+export PATH=$PATH:"$HOME/.local/share/go/bin":"$HOME/go/bin"
+export PATH=$PATH:"$HOME/node_modules/.bin"
+export PATH=$PATH:"$HOME/.luarocks/bin"
+
 # eval "$(fnm env)"
 eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
