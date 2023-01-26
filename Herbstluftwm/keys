@@ -11,7 +11,7 @@ hc keyunbind --all
 #-----------------#
 hc keybind $Mod-Control-c spawn urxvt -title logout -e ~/.local/bin/herbst-logout.sh
 hc keybind $Mod-Control-r reload
-hc keybind $Mod-Shift-q close
+hc keybind $Mod-q close
 hc keybind $Mod-Shift-Return spawn "${TERMINAL:-urxvt}" # 
 # lock screen
 hc keybind $Mod-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
@@ -63,9 +63,9 @@ hc keybind $Mod-Shift-m spawn slack
 
 # browsers #
 #----------#
-hc keybind $Mod-Shift-b spawn brave-bin
+hc keybind $Mod-b spawn brave-bin
 hc keybind $Mod-Shift-a spawn firefox
-hc keybind $Mod-q spawn ~/.local/bin/scratch2 qutebrowser 
+hc keybind $Mod-Shift-q spawn ~/.local/bin/scratch2 qutebrowser 
 # hc keybind $Mod-Shift-n spawn nyxt
 
 hc keybind Print spawn flameshot gui
