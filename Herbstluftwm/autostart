@@ -15,12 +15,13 @@ flameshot &
 picom --experimental-backends &
 xfce4-power-manager &
 # to run urxvt properly, we need to read .Xresources. 
-xrdb $HOME/.Xresources &
+xrdb "$HOME/.Xresources" &
 # Music player deamon
 # mpd --no-daemon $HOME/.config/mpd/mpd.conf &
 # mpDris2 -c $HOME/.config/mpDris2/mpDris2.conf &
 ./panel.sh
 nm-applet &
+# blueman-manager &
 /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 batticon(){
@@ -39,10 +40,10 @@ volicon(){
     vol="$(pidof pa-applet)"
     if [[ "$vol" -lt 1 ]];
     then 
-        $HOME/.config/bin/pa-applet &
+        "$HOME/.config/bin/pa-applet" &
     else
         pkill pa-applet;
-        $HOME/.config/bin/pa-applet &
+        "$HOME/.config/bin/pa-applet" &
     fi
 }
 # volicon
@@ -53,15 +54,15 @@ batticon
 
 # KEYBINDINGS #
 #-------------#
-source $HOME/.config/herbstluftwm/keys
+source "$HOME/.config/herbstluftwm/keys"
 
 # THEME #
 #-------#
-source $HOME/.config/herbstluftwm/HLWM_themes/theme
+source "$HOME/.config/herbstluftwm/HLWM_themes/theme"
 
 # RULES #
 #-------#
-source $HOME/.config/herbstluftwm/winRules
+source "$HOME/.config/herbstluftwm/winRules"
 
 # FIND THE PANEL #
 #----------------#
