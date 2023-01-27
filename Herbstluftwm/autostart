@@ -10,7 +10,18 @@ hc emit_hook reload
 #-----------#
 
 # Screenshots
-flameshot &
+cflameshot(){
+    pfshot="$(pidof flameshot)"
+    if [[ "$pfshot" -lt 1 ]];
+    then 
+        flameshot &
+    else
+        pkill flameshot;
+        flameshot &
+    fi
+}
+
+cflameshot
 
 picom --experimental-backends &
 xfce4-power-manager &

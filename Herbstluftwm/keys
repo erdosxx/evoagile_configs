@@ -48,7 +48,7 @@ hc keybind $Mod-t spawn alacritty
 hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
-#hc keybind $Mod-Control-f spawn dmenu_run -p Launch: -fn Hermit:size=10 -l 10 -g 7 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8'
+hc keybind $Mod-Control-d spawn dmenu_run -p Launch: -fn "Hurmit Nerd Font":size=14 -l 10 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8'
 hc keybind $Mod-Shift-r spawn rofi -show drun
 # no package for rofi-emoji in Gentoo
 # hc keybind $Mod-Control-e spawn rofi -show emoji
