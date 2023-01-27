@@ -30,4 +30,4 @@ if command -v bat &> /dev/null; then
 fi
 
 # Set UK key board layout
-setxkbmap -layout gb -variant "" -model latitude
+# setxkbmap -layout gb -variant "" -model latitude

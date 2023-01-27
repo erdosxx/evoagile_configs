@@ -1,15 +1,17 @@
-export GTK_IM_MODULE=uim
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
+
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+
+if ! pgrep -x "fcitx" > /dev/null
+then
+  fcitx
+fi
 
 if ! pgrep -x "imwheel" > /dev/null
 then
 imwheel
-fi
-
-if ! pgrep -x "ibus-daemon" > /dev/null
-then
-ibus-daemon -drx
 fi
 
 # Environment variables set everywhere
