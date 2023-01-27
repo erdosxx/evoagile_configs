@@ -48,7 +48,7 @@ hc keybind $Mod-t spawn alacritty
 hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
-hc keybind $Mod-Control-d spawn dmenu_run -p Launch: -fn "Hurmit Nerd Font":size=14 -l 10 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8'
+hc keybind $Mod-Control-d spawn dmenu_run -p Launch: -fn "Inconsolata Nerd Font":size=14 -l 10 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8'
 hc keybind $Mod-Shift-r spawn rofi -show drun
 # no package for rofi-emoji in Gentoo
 # hc keybind $Mod-Control-e spawn rofi -show emoji
@@ -133,6 +133,8 @@ done
 # layouting #
 #-----------#
 # hc keybind $Mod-Shift-s spawn new-layout.sh 
+hc keybind $Mod-Control-x spawn urxvt -title dual_monitor \
+  -e ~/.screenlayout/dual_with_LG.sh
 hc keybind $Mod-Shift-y spawn ./.local/bin/load-layout.sh
 hc keybind $Mod-r remove
 hc keybind $Mod-f fullscreen toggle
@@ -151,7 +153,7 @@ hc keybind $Mod-space \
 hc keybind $Mod-BackSpace   cycle_monitor
 hc keybind $Mod-Tab         cycle_all +1
 hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-i jumpto urgent
+hc keybind $Mod-Control-i jumpto urgent
 
 # MOUSE #
 #-------#
