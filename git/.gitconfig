@@ -1,0 +1,38 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	unstage = reset HEAD --
+	last = log -1 HEAD
+  lone = log --graph --oneline
+  lna = log -p --name-only --oneline --graph
+
+[user]
+	email = norel.evoagile@gmail.com
+	name = Norel
+
+[core]
+	editor = vim
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  features = decorations
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+[pull]
+	rebase = false
