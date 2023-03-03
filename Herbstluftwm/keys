@@ -14,7 +14,7 @@ hc keybind $Mod-Control-r reload
 hc keybind $Mod-q close
 hc keybind $Mod-Shift-Return spawn "${TERMINAL:-urxvt}" # 
 # lock screen
-hc keybind $Mod-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
+hc keybind $Mod-Control-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
 
 # multimedia #
 #------------#
@@ -31,7 +31,7 @@ hc keybind $Mod-Control-l spawn playerctl next
 hc keybind $Mod-Control-h spawn playerctl previous
 hc keybind $Mod-Control-s spawn playerctl stop
 # Volume and Mixer control
-hc keybind $Mod-Shift-u spawn pavucontrol
+hc keybind $Mod-Control-v spawn pavucontrol
 hc keybind $Mod-Control-b spawn blueman-manager
 hc keybind $Mod-Shift-t spawn spotify
 
@@ -60,6 +60,7 @@ hc keybind $Mod-Shift-d spawn urxvt -title launch.sh -e ~/.local/bin/launch.sh
 hc keybind $Mod-Shift-e spawn urxvt -title configs -e ~/.local/bin/edit_configs.sh
 hc keybind $Mod-Control-t spawn urxvt -title themesel.sh -e ~/.local/bin/themesel.sh
 hc keybind $Mod-Shift-m spawn slack
+hc keybind $Mod-z spawn zotero
 
 # browsers #
 #----------#

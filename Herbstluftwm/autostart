@@ -75,6 +75,8 @@ source "$HOME/.config/herbstluftwm/HLWM_themes/theme"
 #-------#
 source "$HOME/.config/herbstluftwm/winRules"
 
+sh $HOME/.config/xmodmap/swap_keys.sh
+
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1920x1080+0+0 3840x2160+1920+0
 # or simply:

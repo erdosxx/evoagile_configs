@@ -28,6 +28,9 @@ export MANWIDTH=999
 
 export GOPATH=$HOME/.local/share/go
 
+# Show every matching package without number of limitation.
+export EIX_LIMIT=0
+
 export PATH=$PATH:"$HOME/.local/bin"
 export PATH=$PATH:"$HOME/bin"
 export PATH=$PATH:"$HOME/.cargo/bin"
