@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+case "$1" in
+
+	scratchpad) 		
+    entry="urxvt -title scratchpad" 		
+    ;;
+	FM) 		
+    entry="urxvt -title FM -e $HOME/.local/bin/bettercd.sh"		
+    ;;
+  Mail)
+    entry="urxvt -title Mail -e neomutt"
+    ;;
+  Music)
+    entry="urxvt -title Music -e ncmpcpp"
+    ;;
+  Todo)
+    entry="urxvt -title Todo -e $HOME/.local/bin/schedule.sh"
+    ;;
+  launch)
+    entry="alacritty -t launch -e launch.sh"
+esac
+
+xdotool search --onlyvisible --name "$1" windowunmap \
+    || xdotool search --name "$1" windowmap \
+    || $entry &

@@ -8,8 +8,7 @@ export LC_COLLATE="en_US.UTF-8"
 
 export GDRIVE_PATH="$HOME/gdrive"
 
-export MYVIMRC="$HOME/localgit/evoagile_configs/vim/.vimrc"
-export MYNVIMRC="$HOME/localgit/evoagile_configs/vim/init.vim"
+export MYVIMRC="$HOME/.vimrc"
 export MYNVIMLUARC="$HOME/.config/nvim/init.lua"
 export MYURXVTRC="$HOME/.config/urxvt/urxvt.config"
 
