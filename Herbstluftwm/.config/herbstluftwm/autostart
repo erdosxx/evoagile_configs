@@ -51,10 +51,10 @@ volicon(){
     vol="$(pidof pa-applet)"
     if [[ "$vol" -lt 1 ]];
     then 
-        "$HOME/.config/bin/pa-applet" &
+        "$HOME/.local/bin/pa-applet" &
     else
         pkill pa-applet;
-        "$HOME/.config/bin/pa-applet" &
+        "$HOME/.local/bin/pa-applet" &
     fi
 }
 # volicon
