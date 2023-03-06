@@ -20,7 +20,7 @@ export XDG_RUNTIME_DIR=/tmp/"runtime-$(whoami)"
 
 export EDITOR="nvim"
 export TERMINAL="urxvt"
-export BROWSER="chromium"
+export BROWSER="brave-bin"
 
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
