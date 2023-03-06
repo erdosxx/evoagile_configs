@@ -68,7 +68,7 @@ case "$choice" in
         choice="$HOME/.config/picom/picom.conf"
         ;;
     polybar)
-        choice="$HOME/.config/polybar/config"
+        choice="$HOME/.config/polybar/config.ini"
         ;;
     qutebrowser)
         choice="$HOME/.config/qutebrowser/config.py"
