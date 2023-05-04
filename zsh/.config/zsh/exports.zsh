@@ -5,6 +5,7 @@ SAVEHIST=1000000
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 export GDRIVE_PATH="$HOME/gdrive"
 
@@ -36,6 +37,8 @@ export PATH=$PATH:"$HOME/.cargo/bin"
 export PATH=$PATH:"$HOME/.local/share/go/bin":"$HOME/go/bin"
 export PATH=$PATH:"$HOME/node_modules/.bin"
 export PATH=$PATH:"$HOME/.luarocks/bin"
+
+export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
 
 # eval "$(fnm env)"
 eval "$(zoxide init zsh)"
