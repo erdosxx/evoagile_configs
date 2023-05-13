@@ -7,6 +7,9 @@ case "$1" in
     qutebrowser)
         entry="qutebrowser"
         ;;
+    Zoom)
+        entry="zoom"
+        ;;
     Alacritty)
         entry="urxvt -e $HOME/.local/bin/wingeo"
         ;;
@@ -14,7 +17,7 @@ case "$1" in
         entry="qalculate-gtk"
         ;;
     Mail)
-        entry="mailspring"
+        entry="urxvt -title neomutt -e /usr/bin/neomutt"
         ;;
     Menu)
         entry="urxvt -title launch -e $HOME/.local/bin/launch.sh"

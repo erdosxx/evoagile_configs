@@ -17,6 +17,9 @@ case "$1" in
   Todo)
     entry="urxvt -title Todo -e $HOME/.local/bin/schedule.sh"
     ;;
+	Zoom) 		
+    entry="zoom" 		
+    ;;
   launch)
     entry="alacritty -t launch -e launch.sh"
 esac

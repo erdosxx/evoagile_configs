@@ -60,12 +60,11 @@ hc keybind $Mod-Shift-d spawn urxvt -title launch.sh -e ~/.local/bin/launch.sh
 hc keybind $Mod-Shift-e spawn urxvt -title configs -e ~/.local/bin/edit_configs.sh
 hc keybind $Mod-Control-t spawn urxvt -title themesel.sh -e ~/.local/bin/themesel.sh
 hc keybind $Mod-Shift-m spawn slack
-hc keybind $Mod-z spawn zotero
+hc keybind $Mod-Shift-z spawn zotero
 
 # browsers #
 #----------#
 hc keybind $Mod-b spawn brave-bin
-hc keybind $Mod-Shift-a spawn firefox
 hc keybind $Mod-Shift-q spawn ~/.local/bin/scratch2 qutebrowser 
 # hc keybind $Mod-Shift-n spawn nyxt
 
@@ -76,8 +75,10 @@ hc keybind Print spawn flameshot gui
 hc keybind $Mod-Return spawn ~/.local/bin/scratch scratchpad 
 # FM: file manager
 hc keybind $Mod-Shift-f spawn ~/.local/bin/scratch FM
+hc keybind $Mod-Shift-a spawn urxvt -title ranger -e ranger
 hc keybind $Mod-Control-Return spawn ~/.local/bin/scratchpad
 hc keybind $Mod-m spawn ~/.local/bin/scratch Mail
+hc keybind $Mod-z spawn ~/.local/bin/scratch Zoom 
 # MPD client: ncmpcpp need to configured
 # hc keybind $Mod-t spawn scratch Music
 hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Calc
