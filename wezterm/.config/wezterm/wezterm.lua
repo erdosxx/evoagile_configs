@@ -41,6 +41,10 @@ config.keys = {
 		mods = "ALT",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
+	{ key = "h", mods = "ALT", action = act.MoveTabRelative(-1) },
+	{ key = "l", mods = "ALT", action = act.MoveTabRelative(1) },
+	{ key = "j", mods = "ALT", action = act.ActivateTabRelative(-1) },
+	{ key = "k", mods = "ALT", action = act.ActivateTabRelative(1) },
 }
 
 for i = 1, 8 do
@@ -48,11 +52,6 @@ for i = 1, 8 do
 	table.insert(config.keys, {
 		key = tostring(i),
 		mods = "ALT",
-		action = act.ActivateTab(i - 1),
-	})
-	-- F1 through F8 to activate that tab
-	table.insert(config.keys, {
-		key = "F" .. tostring(i),
 		action = act.ActivateTab(i - 1),
 	})
 end
