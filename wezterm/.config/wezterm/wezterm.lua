@@ -47,6 +47,46 @@ config.keys = {
 	{ key = "l", mods = "ALT", action = act.MoveTabRelative(1) },
 	{ key = "j", mods = "ALT", action = act.ActivateTabRelative(-1) },
 	{ key = "k", mods = "ALT", action = act.ActivateTabRelative(1) },
+	{
+		key = "LeftArrow",
+		mods = "ALT|SHIFT",
+		action = act.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "RightArrow",
+		mods = "ALT|SHIFT",
+		action = act.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "UpArrow",
+		mods = "ALT|SHIFT",
+		action = act.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "DownArrow",
+		mods = "ALT|SHIFT",
+		action = act.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "s",
+		mods = "ALT|SHIFT",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "^",
+		mods = "ALT|SHIFT",
+		action = wezterm.action.SplitPane({
+			direction = "Right",
+			size = { Percent = 40 },
+		}),
+	},
+	{
+		key = "v",
+		mods = "ALT|SHIFT",
+		action = wezterm.action.SplitHorizontal({
+			domain = "CurrentPaneDomain",
+		}),
+	},
 }
 
 for i = 1, 8 do
