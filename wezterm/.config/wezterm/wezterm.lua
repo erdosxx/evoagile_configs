@@ -25,67 +25,94 @@ config.xim_im_name = "fcitx"
 config.keys = {
 	{
 		key = "t",
-		mods = "ALT",
-		action = act.SpawnTab("CurrentPaneDomain"),
-	},
-	-- Create a new tab in the default domain
-	{ key = "t", mods = "ALT", action = act.SpawnTab("DefaultDomain") },
-	-- Create a tab in a named domain
-	{
-		key = "t",
-		mods = "ALT",
+		mods = "SUPER",
 		action = act.SpawnTab({
 			DomainName = "unix",
 		}),
 	},
 	{
-		key = "w",
-		mods = "ALT",
+		key = "x",
+		mods = "SUPER",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
-	{ key = "h", mods = "ALT", action = act.MoveTabRelative(-1) },
-	{ key = "l", mods = "ALT", action = act.MoveTabRelative(1) },
-	{ key = "j", mods = "ALT", action = act.ActivateTabRelative(-1) },
-	{ key = "k", mods = "ALT", action = act.ActivateTabRelative(1) },
 	{
-		key = "LeftArrow",
-		mods = "ALT|SHIFT",
+		key = "w",
+		mods = "SUPER",
+		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+	},
+	{ key = "h", mods = "SUPER|CTRL", action = act.MoveTabRelative(-1) },
+	{ key = "l", mods = "SUPER|CTRL", action = act.MoveTabRelative(1) },
+	{ key = "j", mods = "SUPER|CTRL", action = act.ActivateTabRelative(-1) },
+	{ key = "k", mods = "SUPER|CTRL", action = act.ActivateTabRelative(1) },
+	{
+		key = "h",
+		mods = "SUPER",
 		action = act.ActivatePaneDirection("Left"),
 	},
 	{
-		key = "RightArrow",
-		mods = "ALT|SHIFT",
+		key = "l",
+		mods = "SUPER",
 		action = act.ActivatePaneDirection("Right"),
 	},
 	{
-		key = "UpArrow",
-		mods = "ALT|SHIFT",
+		key = "k",
+		mods = "SUPER",
 		action = act.ActivatePaneDirection("Up"),
 	},
 	{
-		key = "DownArrow",
-		mods = "ALT|SHIFT",
+		key = "j",
+		mods = "SUPER",
 		action = act.ActivatePaneDirection("Down"),
 	},
 	{
 		key = "s",
-		mods = "ALT|SHIFT",
+		mods = "SUPER",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = "^",
-		mods = "ALT|SHIFT",
+		key = "g",
+		mods = "SUPER",
 		action = wezterm.action.SplitPane({
 			direction = "Right",
 			size = { Percent = 40 },
 		}),
 	},
 	{
-		key = "v",
-		mods = "ALT|SHIFT",
+		key = "d",
+		mods = "SUPER",
 		action = wezterm.action.SplitHorizontal({
 			domain = "CurrentPaneDomain",
 		}),
+	},
+	{
+		key = "f",
+		mods = "SUPER",
+		action = wezterm.action.ToggleFullScreen,
+	},
+	{
+		key = "Y",
+		mods = "SUPER|SHIFT",
+		action = act.AdjustPaneSize({ "Left", 5 }),
+	},
+	{
+		key = "U",
+		mods = "SUPER|SHIFT",
+		action = act.AdjustPaneSize({ "Down", 5 }),
+	},
+	{
+		key = "I",
+		mods = "SUPER|SHIFT",
+		action = act.AdjustPaneSize({ "Up", 5 }),
+	},
+	{
+		key = "O",
+		mods = "SUPER|SHIFT",
+		action = act.AdjustPaneSize({ "Right", 5 }),
+	},
+	{
+		key = "Escape",
+		mods = "SUPER",
+		action = wezterm.action.ActivateCopyMode,
 	},
 }
 
@@ -93,7 +120,7 @@ for i = 1, 8 do
 	-- CTRL+ALT + number to activate that tab
 	table.insert(config.keys, {
 		key = tostring(i),
-		mods = "ALT",
+		mods = "SUPER",
 		action = act.ActivateTab(i - 1),
 	})
 end
