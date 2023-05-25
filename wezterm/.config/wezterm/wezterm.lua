@@ -25,11 +25,16 @@ config.xim_im_name = "fcitx"
 config.keys = {
 	{
 		key = "t",
-		mods = "SUPER",
-		action = act.SpawnTab({
-			DomainName = "unix",
-		}),
+		mods = "SHIFT|ALT",
+		action = act.SpawnTab("CurrentPaneDomain"),
 	},
+	--[[ { ]]
+	--[[ 	key = "t", ]]
+	--[[ 	mods = "SUPER", ]]
+	--[[ 	action = act.SpawnTab({ ]]
+	--[[ 		DomainName = "unix", ]]
+	--[[ 	}), ]]
+	--[[ }, ]]
 	{
 		key = "x",
 		mods = "SUPER",
