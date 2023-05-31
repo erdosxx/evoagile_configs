@@ -28,13 +28,6 @@ config.keys = {
 		mods = "SHIFT|ALT",
 		action = act.SpawnTab("CurrentPaneDomain"),
 	},
-	--[[ { ]]
-	--[[ 	key = "t", ]]
-	--[[ 	mods = "SUPER", ]]
-	--[[ 	action = act.SpawnTab({ ]]
-	--[[ 		DomainName = "unix", ]]
-	--[[ 	}), ]]
-	--[[ }, ]]
 	{
 		key = "x",
 		mods = "SUPER",
@@ -70,12 +63,12 @@ config.keys = {
 		action = act.ActivatePaneDirection("Down"),
 	},
 	{
-		key = "s",
+		key = "u",
 		mods = "SUPER",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = "g",
+		key = "p",
 		mods = "SUPER",
 		action = wezterm.action.SplitPane({
 			direction = "Right",
@@ -118,6 +111,11 @@ config.keys = {
 		key = "Escape",
 		mods = "SUPER",
 		action = wezterm.action.ActivateCopyMode,
+	},
+	{
+		key = "s",
+		mods = "SUPER",
+		action = act.Search({ CaseInSensitiveString = "" }),
 	},
 }
 
