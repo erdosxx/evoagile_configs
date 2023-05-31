@@ -1,6 +1,29 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local function check_os_type()
+	local binaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
+	if binaryFormat == "dll" then
+		return "Windows"
+	elseif binaryFormat == "so" then
+		return "Linux"
+	elseif binaryFormat == "dylib" then
+		return "MacOS"
+	end
+end
+
+local function get_mod_key()
+	if check_os_type() == "Linux" then
+		return "ALT"
+	elseif check_os_type() == "MacOS" then
+		return "SUPER"
+	else
+		return "ALT"
+	end
+end
+
+local os_mod_key = get_mod_key()
+
 -- This table will hold the configuration.
 local act = wezterm.action
 local config = {}
@@ -25,51 +48,67 @@ config.xim_im_name = "fcitx"
 config.keys = {
 	{
 		key = "t",
-		mods = "SHIFT|ALT",
+		mods = os_mod_key,
 		action = act.SpawnTab("CurrentPaneDomain"),
 	},
 	{
 		key = "x",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
 	{
 		key = "w",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
-	{ key = "h", mods = "SUPER|CTRL", action = act.MoveTabRelative(-1) },
-	{ key = "l", mods = "SUPER|CTRL", action = act.MoveTabRelative(1) },
-	{ key = "j", mods = "SUPER|CTRL", action = act.ActivateTabRelative(-1) },
-	{ key = "k", mods = "SUPER|CTRL", action = act.ActivateTabRelative(1) },
 	{
 		key = "h",
-		mods = "SUPER",
+		mods = os_mod_key .. "|CTRL",
+		action = act.MoveTabRelative(-1),
+	},
+	{
+		key = "l",
+		mods = os_mod_key .. "|CTRL",
+		action = act.MoveTabRelative(1),
+	},
+	{
+		key = "j",
+		mods = os_mod_key .. "|CTRL",
+		action = act.ActivateTabRelative(-1),
+	},
+	{
+		key = "k",
+		mods = os_mod_key .. "|CTRL",
+		action = act.ActivateTabRelative(1),
+	},
+	{
+		key = "h",
+		mods = os_mod_key,
 		action = act.ActivatePaneDirection("Left"),
 	},
 	{
 		key = "l",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = act.ActivatePaneDirection("Right"),
 	},
 	{
 		key = "k",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = act.ActivatePaneDirection("Up"),
 	},
 	{
 		key = "j",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = act.ActivatePaneDirection("Down"),
 	},
 	{
 		key = "u",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "p",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = wezterm.action.SplitPane({
 			direction = "Right",
 			size = { Percent = 40 },
@@ -77,44 +116,44 @@ config.keys = {
 	},
 	{
 		key = "d",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = wezterm.action.SplitHorizontal({
 			domain = "CurrentPaneDomain",
 		}),
 	},
 	{
 		key = "f",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = wezterm.action.ToggleFullScreen,
 	},
 	{
 		key = "Y",
-		mods = "SUPER|SHIFT",
+		mods = os_mod_key .. "|SHIFT",
 		action = act.AdjustPaneSize({ "Left", 5 }),
 	},
 	{
 		key = "U",
-		mods = "SUPER|SHIFT",
+		mods = os_mod_key .. "|SHIFT",
 		action = act.AdjustPaneSize({ "Down", 5 }),
 	},
 	{
 		key = "I",
-		mods = "SUPER|SHIFT",
+		mods = os_mod_key .. "|SHIFT",
 		action = act.AdjustPaneSize({ "Up", 5 }),
 	},
 	{
 		key = "O",
-		mods = "SUPER|SHIFT",
+		mods = os_mod_key .. "|SHIFT",
 		action = act.AdjustPaneSize({ "Right", 5 }),
 	},
 	{
 		key = "Escape",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = wezterm.action.ActivateCopyMode,
 	},
 	{
 		key = "s",
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = act.Search({ CaseInSensitiveString = "" }),
 	},
 }
@@ -123,7 +162,7 @@ for i = 1, 8 do
 	-- CTRL+ALT + number to activate that tab
 	table.insert(config.keys, {
 		key = tostring(i),
-		mods = "SUPER",
+		mods = os_mod_key,
 		action = act.ActivateTab(i - 1),
 	})
 end
