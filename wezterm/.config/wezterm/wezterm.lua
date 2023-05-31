@@ -2,20 +2,24 @@
 local wezterm = require("wezterm")
 
 local function check_os_type()
-	local binaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
-	if binaryFormat == "dll" then
-		return "Windows"
-	elseif binaryFormat == "so" then
-		return "Linux"
-	elseif binaryFormat == "dylib" then
-		return "MacOS"
+	-- ask LuaJIT first
+	if jit then
+		return jit.os
 	end
+
+	-- Unix, Linux variants
+	local fh, err = assert(io.popen("uname -o 2>/dev/null", "r"))
+	if fh then
+		osname = fh:read()
+	end
+
+	return osname or "Windows"
 end
 
 local function get_mod_key()
-	if check_os_type() == "Linux" then
+	if check_os_type() == "GNU/Linux" then
 		return "ALT"
-	elseif check_os_type() == "MacOS" then
+	elseif check_os_type() == "Darwin" then
 		return "SUPER"
 	else
 		return "ALT"
