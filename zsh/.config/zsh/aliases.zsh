@@ -39,5 +39,8 @@ alias rxs="xrdb $HOME/.Xresources"
 alias ra="ranger"
 
 alias dict="mdic.sh"
+alias lf="lfct"
 
-alias lf="lfub"
+alias obsc="cd $GDRIVE_PATH && grive -s Obsidian && cd -"
+
+# alias lf="lfub"
