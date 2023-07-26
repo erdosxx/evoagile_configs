@@ -73,7 +73,7 @@ packagecompiler/precompile_statements.jl: Manifest.toml bin/julia
 	JULIA_LOAD_PATH=$${PWD}:@stdlib ${JULIA} -e 'using Pkg; Pkg.add(["JSON", "fzf_jll", "Random", "Zlib_jll"])' 2> /dev/null && \
 	JULIA_LOAD_PATH=$${PWD}:@stdlib ${JULIA} -e 'using Pkg; Pkg.precompile()' 2> /dev/null && \
 	echo "$$PACKAGE_CONTENT" > src/Example.jl && \
-	JULIA_TRACE_COMPILE=1 nvim src/Example.jl && \ # NOTE: You may need to check that neovim is correctly on your path
+	JULIA_TRACE_COMPILE=1 nvim src/Example.jl && \
 	rm -rf $${TMPDIR}
 
 bin/julia:
