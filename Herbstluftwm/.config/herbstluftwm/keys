@@ -45,7 +45,7 @@ hc keybind $Mod-Shift-t spawn spotify
 hc keybind $Mod-Shift-w spawn urxvt -title windows -e ~/.local/bin/windows.sh
 hc keybind $Mod-a spawn urxvt
 hc keybind $Mod-t spawn alacritty
-hc keybind $Mod-w spawn wezterm
+hc keybind $Mod-w spawn ~/.cargo/bin/wz
 hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
