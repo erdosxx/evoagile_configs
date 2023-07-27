@@ -56,7 +56,7 @@ Manifest.toml: Project.toml
 	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.instantiate()'
 
 Project.toml:
-	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.add("LanguageServer")'
+	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.add("LanguageServer");'
 
 packagecompiler/Manifest.toml: packagecompiler/Project.toml
 	JULIA_LOAD_PATH=${PWD}/packagecompiler/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.instantiate()'
@@ -132,27 +132,27 @@ using Random
 using Zlib_jll
 
 function hello(who, notused)
-	println("hello", who)
-  shuffle([1, 2, 3])
-  shoffle([1, 2, 3])
-  fzzf = fzf_jll.fzzf()
-  fzf = fzf_jll.fzf(1)
-  JSON.print(stdout, Dict("hello" => [1, 2, 3]), 2, 123)
-  JSON.print(stdout, Dict("hello" => [1, 2, 3]))
-  hi(who)
-  return Zlib_jll.libz
+    println("hello", who)
+    shuffle([1, 2, 3])
+   shoffle([1, 2, 3])
+    fzzf = fzf_jll.fzzf()
+    fzf = fzf_jll.fzf(1)
+    JSON.print(stdout, Dict("hello" => [1, 2, 3]), 2, 123)
+    JSON.print(stdout, Dict("hello" => [1, 2, 3]))
+    hi(who)
+    return Zlib_jll.libz
 end
 
 function world(s)
-  if s == nothing
-  	hello(s)
+    if s == nothing
+      hello(s)
   else
-  	hello(s)
+      hello(s)
   end
-  x = [1, 2, 3]
-  for i in 1:length(x)
-  	println(x[i])
-  end
+    x = [1, 2, 3]
+    for i in 1:length(x)
+        println(x[i])
+    end
 end
 
 end # module
