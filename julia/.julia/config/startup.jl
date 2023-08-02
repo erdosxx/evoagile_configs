@@ -65,6 +65,7 @@ atreplinit() do repl
     @eval using Revise
     @eval using REPLVim
     @eval @async REPLVim.serve()
+    @eval using Pkg
   catch e
     @warn "error while loading OhMyREPL, Revise and REPLVim" e
   end
