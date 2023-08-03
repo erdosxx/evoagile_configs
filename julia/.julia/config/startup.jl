@@ -18,7 +18,8 @@ function genGithubRepo(userName::String, repoName::String)
     dir = "~/localgit",
     julia = v"1",  # for [compat] section in Project.toml
     plugins = [
-      ProjectFile(; version = v"0.1.0-DEV"),
+      # Use semantic version, See Julia Pattern book page 43.
+      ProjectFile(; version = v"1.0.0-DEV"),  
       License(; name = "MIT", path = nothing, destination = "LICENSE"),
       Git(;
         branch = LibGit2.getconfig("init.defaultBranch", "master"),
@@ -64,6 +65,7 @@ atreplinit() do repl
     @eval using Revise
     @eval using REPLVim
     @eval @async REPLVim.serve()
+    @eval using Pkg
   catch e
     @warn "error while loading OhMyREPL, Revise and REPLVim" e
   end
