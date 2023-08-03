@@ -50,28 +50,28 @@ endif
 default: $(SYSIMAGE)
 
 $(SYSIMAGE): Manifest.toml packagecompiler/Manifest.toml packagecompiler/precompile_statements.jl
-	JULIA_LOAD_PATH=${PWD}:${PWD}/packagecompiler:@stdlib ${JULIA} -e 'using PackageCompiler; PackageCompiler.create_sysimage(:LanguageServer, sysimage_path="$(SYSIMAGE)", precompile_statements_file="packagecompiler/precompile_statements.jl")'
+	JULIA_LOAD_PATH=${PWD}:${PWD}/packagecompiler:@stdlib ${JULIA} --startup-file=no -e 'using PackageCompiler; PackageCompiler.create_sysimage(:LanguageServer, sysimage_path="$(SYSIMAGE)", precompile_statements_file="packagecompiler/precompile_statements.jl")' --startup-file=no
 
 Manifest.toml: Project.toml
-	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.instantiate()'
+	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} --startup-file=no -e 'using Pkg; Pkg.instantiate()'
 
 Project.toml:
-	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.add("LanguageServer");'
+	JULIA_LOAD_PATH=${PWD}/Project.toml:@stdlib ${JULIA} --startup-file=no -e 'using Pkg; Pkg.add("LanguageServer");'
 
 packagecompiler/Manifest.toml: packagecompiler/Project.toml
-	JULIA_LOAD_PATH=${PWD}/packagecompiler/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.instantiate()'
+	JULIA_LOAD_PATH=${PWD}/packagecompiler/Project.toml:@stdlib ${JULIA} --startup-file=no -e 'using Pkg; Pkg.instantiate()'
 
 packagecompiler/Project.toml:
 	mkdir -p packagecompiler
-	JULIA_LOAD_PATH=${PWD}/packagecompiler/Project.toml:@stdlib ${JULIA} -e 'using Pkg; Pkg.add("PackageCompiler")'
+	JULIA_LOAD_PATH=${PWD}/packagecompiler/Project.toml:@stdlib ${JULIA} --startup-file=no -e 'using Pkg; Pkg.add("PackageCompiler")'
 
 packagecompiler/precompile_statements.jl: Manifest.toml bin/julia
 	TMPDIR=$(shell mktemp -d) && \
 	cd $${TMPDIR} && \
-	JULIA_LOAD_PATH=: ${JULIA} -e 'using Pkg; Pkg.generate("Example")' 2> /dev/null && \
+	JULIA_LOAD_PATH=: ${JULIA} --startup-file=no -e 'using Pkg; Pkg.generate("Example")' 2> /dev/null && \
 	cd Example && \
-	JULIA_LOAD_PATH=$${PWD}:@stdlib ${JULIA} -e 'using Pkg; Pkg.add(["JSON", "fzf_jll", "Random", "Zlib_jll"])' 2> /dev/null && \
-	JULIA_LOAD_PATH=$${PWD}:@stdlib ${JULIA} -e 'using Pkg; Pkg.precompile()' 2> /dev/null && \
+	JULIA_LOAD_PATH=$${PWD}:@stdlib ${JULIA} --startup-file=no -e 'using Pkg; Pkg.add(["JSON", "fzf_jll", "Random", "Zlib_jll"])' 2> /dev/null && \
+	JULIA_LOAD_PATH=$${PWD}:@stdlib ${JULIA} --startup-file=no -e 'using Pkg; Pkg.precompile()' 2> /dev/null && \
 	echo "$$PACKAGE_CONTENT" > src/Example.jl && \
 	JULIA_TRACE_COMPILE=1 nvim src/Example.jl && \
 	rm -rf $${TMPDIR}
