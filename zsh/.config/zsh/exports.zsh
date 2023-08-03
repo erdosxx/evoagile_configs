@@ -31,12 +31,12 @@ export GOPATH=$HOME/.local/share/go
 # Show every matching package without number of limitation.
 export EIX_LIMIT=0
 
-export PATH=$PATH:"$HOME/.local/bin"
-export PATH=$PATH:"$HOME/bin"
-export PATH=$PATH:"$HOME/.cargo/bin"
-export PATH=$PATH:"$HOME/.local/share/go/bin":"$HOME/go/bin"
-export PATH=$PATH:"$HOME/node_modules/.bin"
-export PATH=$PATH:"$HOME/.luarocks/bin"
+# export PATH=$PATH:"$HOME/.local/bin"
+export PATH="$HOME/bin":$PATH
+export PATH="$HOME/.cargo/bin":$PATH
+export PATH="$GOPATH/bin":"$HOME/go/bin":$PATH
+export PATH="$HOME/node_modules/.bin":$PATH
+export PATH="$HOME/.luarocks/bin":$PATH
 
 export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
 
