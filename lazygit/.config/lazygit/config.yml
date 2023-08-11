@@ -1,0 +1,11 @@
+os:
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim --line={{line}} {{filename}}'
+  editAtLineAndWait: 'nvim --block --line={{line}} {{filename}}'
+  editInTerminal: true
+  openDirInEditor: 'nvim {{dir}}'
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
