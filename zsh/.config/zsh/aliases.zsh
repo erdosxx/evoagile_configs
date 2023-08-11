@@ -2,7 +2,8 @@
 alias j='z'
 alias f='zi'
 alias g='lazygit'
-alias nvimrc='nvim ~/.config/nvim/'
+alias nvk='nvim ~/.config/nvim/lua/user/keymaps.lua'
+alias nvp='nvim ~/.config/nvim/lua/user/plugins.lua'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
