@@ -41,6 +41,9 @@ export PATH="$HOME/.luarocks/bin":$PATH
 export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
 export OPENAI_API_HOST="https://api.openai.com"
 
+# For Nix
+export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
+
 # eval "$(fnm env)"
 eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
