@@ -32,6 +32,7 @@ alias poy="ssh polaris -Y"
 alias hpoy="ssh polaris_home -Y"
 alias mby="ssh erdos@mbp -Y"
 alias hmby="ssh erdos@mbp_home -Y"
+alias niy="ssh nia_gpu -Y"
 
 alias vi="nvim"
 alias vim="vim -u $MYVIMRC"
