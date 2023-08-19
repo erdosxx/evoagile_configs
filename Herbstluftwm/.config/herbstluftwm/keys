@@ -14,7 +14,8 @@ hc keybind $Mod-Control-r reload
 hc keybind $Mod-q close
 hc keybind $Mod-Shift-Return spawn "${TERMINAL:-urxvt}" # 
 # lock screen
-hc keybind $Mod-Control-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
+# hc keybind $Mod-Control-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
+hc keybind $Mod-Control-z spawn xscreensaver-command -lock
 
 # multimedia #
 #------------#
