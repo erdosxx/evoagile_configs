@@ -6,15 +6,23 @@ hc rule title~'launch.sh' floating=on floatplacement=center floating_geometry=60
 hc rule title~'vsp2' floating=on floatplacement=center floating_geometry=375x1000
 hc rule title~'configs' floating=on floatplacement=center floating_geometry=375x600
 hc rule title~'windows' floating=on floatplacement=center floating_geometry=700x300
-hc rule title~'logout' floating=on floatplacement=center floating_geometry=320x200
+hc rule title~'logout' floating=on floatplacement=center floating_geometry=320x250
 hc rule title~'vmach.sh' floating=on floatplacement=center floating_geometry=375x500
+hc rule title~'VmChoice' floating=on floatplacement=center floating_geometry=200x250
+hc rule title~'newLayout' floating=on floatplacement=center floating_geometry=200x250
 hc rule title~'themesel.sh' floating=on floatplacement=center floating_geometry=375x200
 
 # SCRATCHPADS #
 #-------------#
-hc rule title~'scratchpad' floating=on floatplacement=center floating_geometry=1000x500
+hc rule title~'scratchpad' floating=on floatplacement=center floating_geometry=1300x900
+hc rule class='scpad_wezterm' floating=on floatplacement=center floating_geometry=1300x900
+hc rule title~'Ranger' floating=on floatplacement=center floating_geometry=1500x900
 hc rule title~'FM' floating=on floatplacement=center floating_geometry=1000x800
-hc rule class~'qutebrowser' floating=on floatplacement=center floating_geometry=1800x1000
+hc rule class='qutebrowser' floating=on floatplacement=center floating_geometry=1800x1000
+hc rule class='librewolf' floating=on floatplacement=center floating_geometry=1800x1000
+hc rule class='Qalculate-gtk' floating=on floatplacement=center floating_geometry=900x500
+hc rule class='Pavucontrol' floating=on floatplacement=center floating_geometry=900x500
+hc rule class='Blueman-manager' floating=on floatplacement=center floating_geometry=900x500
 hc rule title~'Mail' floating=on floatplacement=center floating_geometry=1500x800
 hc rule title~'Music' floating=on floatplacement=center floating_geometry=1200x800
 hc rule title~'Todo' floating=on floatplacement=center floating_geometry=1000x650

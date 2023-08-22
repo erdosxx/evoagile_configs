@@ -1,5 +1,10 @@
-xwallpaper --zoom $HOME/Media/Pictures/Wallpapers/hole-in-the-wall.png
-
+wpaper() {
+    DIR="$HOME/Pictures/wallpapers/"
+    wpaper="$(ls $DIR/*.JPG | shuf -n1)"
+    cat $wpaper > $HOME/Pictures/wallpapers/wallpaper.jpg
+    xwallpaper --zoom $HOME/Pictures/wallpapers/wallpaper.jpg
+}
+wpaper
 
 
 hc attr theme.tiling.reset 1

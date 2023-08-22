@@ -93,4 +93,3 @@ for monitor in $(hc list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     "$panel" "$monitor" &
 done
-hc split vertical 0.6; hc remove

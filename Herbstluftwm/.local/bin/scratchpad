@@ -15,10 +15,10 @@
 tag="${1:-scratchpad}"
 hc() { "${herbstclient_command[@]:-herbstclient}" "$@" ;}
 
-termwidth_percent=${WIDTH_PERC:-65}
+termwidth_percent=${WIDTH_PERC:-85}
 mrect=( $(hc monitor_rect -p "" ) )
 termwidth=$(( (${mrect[2]} * termwidth_percent) / 100 ))
-termheight=${HEIGHT_PIXELS:-550}
+termheight=${HEIGHT_PIXELS:-950}
 
 rect=(
     $termwidth
@@ -52,7 +52,7 @@ update_geom() {
     hc move_monitor "$monitor" $geom
 }
 
-steps=${ANIMATION_STEPS:-15}
+steps=${ANIMATION_STEPS:-1}
 interval=${ANIMATION_INTERVAL:-0.01}
 
 animate() {

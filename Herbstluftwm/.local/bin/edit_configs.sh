@@ -108,5 +108,6 @@ case "$choice" in
         exit 1
         ;;
 esac
-devour urxvt -e nvim "$choice"
+# devour urxvt -e nvim "$choice"
+devour wezterm -e nvim "$choice"
 

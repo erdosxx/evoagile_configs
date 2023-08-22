@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+PADCLASS="scpad_wezterm"
+WEZ_DEFAULT_NAME="zsh"
+
+wez_process="$(xdotool search --class ${PADCLASS})";
+if [ -z "$wez_process" ]; then
+  # notify-send "wezterm scratch pad not found. Create new one."
+  wezterm
+  xdotool search --name ${WEZ_DEFAULT_NAME} set_window --class ${PADCLASS}
+  # notify-send "Changed class name for wezterm scratch pad"
+else
+  wezclass_visible="$(xdotool search --onlyvisible --class ${PADCLASS})";
+    if [ -n "${wezclass_visible}" ]; then
+        xdo hide "$wez_process"
+    else
+        xdo show "$wez_process"
+    fi
+fi
+

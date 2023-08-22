@@ -12,7 +12,6 @@ hc keyunbind --all
 hc keybind $Mod-Control-c spawn urxvt -title logout -e ~/.local/bin/herbst-logout.sh
 hc keybind $Mod-Control-r reload
 hc keybind $Mod-q close
-hc keybind $Mod-Shift-Return spawn "${TERMINAL:-urxvt}" # 
 # lock screen
 # hc keybind $Mod-Control-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
 hc keybind $Mod-Control-z spawn xscreensaver-command -lock
@@ -32,9 +31,8 @@ hc keybind $Mod-Control-l spawn playerctl next
 hc keybind $Mod-Control-h spawn playerctl previous
 hc keybind $Mod-Control-s spawn playerctl stop
 # Volume and Mixer control
-hc keybind $Mod-Control-v spawn pavucontrol
-hc keybind $Mod-Control-b spawn blueman-manager
-hc keybind $Mod-Shift-t spawn spotify
+hc keybind $Mod-Control-v spawn ~/.local/bin/scratch2 Pavucontrol
+hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
 
 # programs #
 # #--------#
@@ -46,7 +44,7 @@ hc keybind $Mod-Shift-t spawn spotify
 hc keybind $Mod-Shift-w spawn urxvt -title windows -e ~/.local/bin/windows.sh
 hc keybind $Mod-a spawn urxvt
 hc keybind $Mod-t spawn alacritty
-hc keybind $Mod-w spawn ~/.cargo/bin/wz
+hc keybind $Mod-w spawn wezterm
 hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
@@ -61,30 +59,36 @@ hc keybind $Mod-Shift-v spawn urxvt -title vmach.sh -e ~/.local/bin/vmach.sh
 hc keybind $Mod-Shift-d spawn urxvt -title launch.sh -e ~/.local/bin/launch.sh 
 hc keybind $Mod-Shift-e spawn urxvt -title configs -e ~/.local/bin/edit_configs.sh
 hc keybind $Mod-Control-t spawn urxvt -title themesel.sh -e ~/.local/bin/themesel.sh
-hc keybind $Mod-Shift-m spawn slack
-hc keybind $Mod-Shift-z spawn zotero
+hc keybind $Mod-Shift-m chain , use_index 5 , spawn slack
+hc keybind $Mod-Shift-z chain , use_index 1 , spawn zotero
+hc keybind $Mod-Shift-o chain , use_index 6 , spawn obsidian
 
 # browsers #
 #----------#
-hc keybind $Mod-b spawn brave-bin
+hc keybind $Mod-b chain , use_index 2 , spawn brave-bin
 hc keybind $Mod-Shift-q spawn ~/.local/bin/scratch2 qutebrowser 
+hc keybind $Mod-Shift-w spawn librewolf
 # hc keybind $Mod-Shift-n spawn nyxt
 
 hc keybind Print spawn flameshot gui
 
 # scratchpads #
 #-------------#
-hc keybind $Mod-Return spawn ~/.local/bin/scratch scratchpad 
+hc keybind $Mod-Return spawn ~/.local/bin/scratchpad
+# Not correctly work everythime because of changing title when runing programs.
+hc keybind $Mod-Control-Return spawn ~/.local/bin/scratch scratchpad 
 # FM: file manager
-hc keybind $Mod-Shift-f spawn ~/.local/bin/scratch FM
-hc keybind $Mod-Shift-a spawn urxvt -title ranger -e ranger
-hc keybind $Mod-Control-Return spawn ~/.local/bin/scratchpad
-hc keybind $Mod-m spawn ~/.local/bin/scratch Mail
-hc keybind $Mod-z spawn ~/.local/bin/scratch Zoom 
+hc keybind $Mod-Shift-f spawn wezterm -e lf
+hc keybind $Mod-Shift-a spawn wezterm -e ranger
+# hc keybind $Mod-Shift-a spawn urxvt -title ranger -e ranger
+# hc keybind $Mod-m spawn ~/.local/bin/scratch Mail
+hc keybind $Mod-m chain , use_index 4 , spawn thunderbird
+hc keybind $Mod-z chain , use_index 7 , spawn zoom 
 # MPD client: ncmpcpp need to configured
 # hc keybind $Mod-t spawn scratch Music
-hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Calc
-# Open kitty terminal
+hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Qalculate
+# Open Wezterm scratchpad but Not fully working
+# This can be replaced by default scratch pad function.
 hc keybind $Mod-y spawn ~/.local/bin/scpad
 
 # focusing client #
@@ -136,7 +140,7 @@ done
 
 # layouting #
 #-----------#
-# hc keybind $Mod-Shift-s spawn new-layout.sh 
+hc keybind $Mod-Shift-t spawn urxvt -title newLayout -e ./.local/bin/new-layout.sh 
 hc keybind $Mod-Control-x spawn urxvt -title dual_monitor \
   -e ~/.screenlayout/dual_with_LG.sh
 hc keybind $Mod-Shift-y spawn ./.local/bin/load-layout.sh
@@ -165,3 +169,6 @@ hc mouseunbind --all
 hc mousebind $Mod-Button1 move
 hc mousebind $Mod-Button2 zoom
 hc mousebind $Mod-Button3 resize
+
+# chain
+hc keybind $Mod-Control-e chain , split right 0.6 , focus right , spawn wezterm 

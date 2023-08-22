@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+SCRATCHPAD_NAME=$1
+
+case "$1" in
+
+    qutebrowser)
+        entry="qutebrowser"
+        ;;
+    Blueman-manager)
+        entry="blueman-manager"
+        ;;
+    Pavucontrol)
+        entry="pavucontrol"
+        ;;
+    Qalculate)
+        entry="qalculate-gtk"
+        ;;
+esac
+
+xdotool search --onlyvisible --class "$1" windowunmap \
+    || xdotool search --class "$1" --maxdepth 1 windowmap \
+    || $entry &
+

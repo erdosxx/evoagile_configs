@@ -20,7 +20,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_RUNTIME_DIR=/tmp/"runtime-$(whoami)"
 
 export EDITOR="nvim"
-export TERMINAL="urxvt"
+export TERMINAL="wezterm"
 export BROWSER="brave-bin"
 
 export MANPAGER='nvim +Man!'
