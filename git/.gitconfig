@@ -1,3 +1,6 @@
+[include]
+	path = ~/.gitconfig.user
+
 [alias]
 	co = checkout
 	br = branch
@@ -8,10 +11,6 @@
 	last = log -1 HEAD
   lone = log --graph --oneline
   lna = log -p --name-only --oneline --graph
-
-[user]
-	email = norel.evoagile@gmail.com
-	name = Norel
 
 [core]
 	editor = nvim
