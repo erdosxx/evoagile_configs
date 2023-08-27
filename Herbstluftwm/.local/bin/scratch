@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
+TITLE=$1
 
-case "$1" in
+case ${TITLE} in
 
 	scratchpad)
     # entry="urxvt -title scratchpad"
-    entry="urxvt -title scratchpad"
+    entry="urxvt -T ${TITLE}"
     ;;
 	FM)
-    entry="urxvt -title FM -e $HOME/.local/bin/bettercd.sh"
+    entry="urxvt -T ${TITLE} -e $HOME/.local/bin/bettercd.sh"
     ;;
-  Mail)
-    entry="urxvt -title Mail -e neomutt"
+  Neomutt)
+    entry="urxvt -T ${TITLE} -e neomutt"
     ;;
   Todo)
-    entry="urxvt -title Todo -e $HOME/.local/bin/schedule.sh"
+    entry="urxvt -T ${TITLE} -e $HOME/.local/bin/schedule.sh"
     ;;
 esac
 
-xdotool search --onlyvisible --name "$1" windowunmap \
-    || xdotool search --name "$1" windowmap \
+xdotool search --onlyvisible --name "${TITLE}" windowunmap \
+    || xdotool search --name "${TITLE}" windowmap \
     || $entry &

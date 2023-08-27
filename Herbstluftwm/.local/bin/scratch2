@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-SCRATCHPAD_NAME=$1
+CLASS_NAME=$1
 
-case "$1" in
+case "${CLASS_NAME}" in
 
     qutebrowser)
         entry="qutebrowser"
@@ -13,12 +13,12 @@ case "$1" in
     Pavucontrol)
         entry="pavucontrol"
         ;;
-    Qalculate)
+    Qalculate-gtk)
         entry="qalculate-gtk"
         ;;
 esac
 
-xdotool search --onlyvisible --class "$1" windowunmap \
-    || xdotool search --class "$1" --maxdepth 1 windowmap \
+xdotool search --onlyvisible --class "${CLASS_NAME}" windowunmap \
+    || xdotool search --class "${CLASS_NAME}" --maxdepth 1 windowmap \
     || $entry &
 

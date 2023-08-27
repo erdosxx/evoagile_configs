@@ -9,8 +9,11 @@ herbstluftwm
 i3
 i3blocks
 i3status
+julia_snippets
 keys
-nvim
+luaSnip
+nvim_init
+nvim_keymaps
 picom
 polybar
 qutebrowser
@@ -62,8 +65,14 @@ case "$choice" in
     i3status)
         choice="$HOME/.config/i3status/config"
         ;;
+    julia_snippets)
+        choice="$HOME/.config/nvim/lua/user/LuaSnip/julia.lua"
+        ;;
     keys)
         choice="$HOME/.config/herbstluftwm/keys"
+        ;;
+    luaSnip)
+        choice="$HOME/.config/nvim/lua/user/luaSnip.lua"
         ;;
     picom)
         choice="$HOME/.config/picom/picom.conf"
@@ -86,8 +95,11 @@ case "$choice" in
     urxvt)
         choice="$HOME/.config/urxvt/urxvt.config"
         ;;
-    nvim)
+    nvim_init)
         choice="$HOME/.config/nvim/init.lua"
+        ;;
+    nvim_keymaps)
+        choice="$HOME/.config/nvim/lua/user/keymaps.lua"
         ;;
     website)
         choice="$HOME/.local/website/jpedmedia/index.html"

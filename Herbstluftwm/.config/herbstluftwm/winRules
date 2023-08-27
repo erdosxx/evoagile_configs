@@ -19,11 +19,11 @@ hc rule class='scpad_wezterm' floating=on floatplacement=center floating_geometr
 hc rule title~'Ranger' floating=on floatplacement=center floating_geometry=1500x900
 hc rule title~'FM' floating=on floatplacement=center floating_geometry=1000x800
 hc rule class='qutebrowser' floating=on floatplacement=center floating_geometry=1800x1000
-hc rule class='librewolf' floating=on floatplacement=center floating_geometry=1800x1000
+# hc rule class='librewolf' floating=on floatplacement=center floating_geometry=1800x1000
 hc rule class='Qalculate-gtk' floating=on floatplacement=center floating_geometry=900x500
 hc rule class='Pavucontrol' floating=on floatplacement=center floating_geometry=900x500
 hc rule class='Blueman-manager' floating=on floatplacement=center floating_geometry=900x500
-hc rule title~'Mail' floating=on floatplacement=center floating_geometry=1500x800
+hc rule title='Neomutt' floating=on floatplacement=center floating_geometry=1500x800
 hc rule title~'Music' floating=on floatplacement=center floating_geometry=1200x800
 hc rule title~'Todo' floating=on floatplacement=center floating_geometry=1000x650
 
@@ -41,6 +41,3 @@ hc set tree_style '╾│ ├└╼─┐'
 # UNLOCK #
 #--------#
 hc unlock
-
-
-
