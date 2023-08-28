@@ -39,7 +39,6 @@ export PATH="$HOME/node_modules/.bin":$PATH
 export PATH="$HOME/.luarocks/bin":$PATH
 
 export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
-export OPENAI_API_HOST="https://api.openai.com"
 
 # eval "$(fnm env)"
 eval "$(zoxide init zsh)"
