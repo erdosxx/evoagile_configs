@@ -27,12 +27,6 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
 alias venv="source venv/bin/activate"
-alias djy="ssh aidongju -Y"
-alias poy="ssh polaris -Y"
-alias hpoy="ssh polaris_home -Y"
-alias mby="ssh erdos@mbp -Y"
-alias hmby="ssh erdos@mbp_home -Y"
-alias niy="ssh nia_gpu -Y"
 
 alias vi="nvim"
 alias vim="vim -u $MYVIMRC"
@@ -43,5 +37,12 @@ alias ra="ranger"
 alias dict="mdic.sh"
 
 alias obsc="cd $GDRIVE_PATH && grive -s Obsidian && cd -"
+
+PRIVATE_ALIAS="$HOME/.config/zsh/private_alias.zsh"
+if [ -f $PRIVATE_ALIAS ]; then
+    source $PRIVATE_ALIAS
+else
+    print "404: $PRIVATE_ALIAS not found."
+fi
 
 # alias lf="lfub"
