@@ -38,11 +38,9 @@ alias dict="mdic.sh"
 
 alias obsc="cd $GDRIVE_PATH && grive -s Obsidian && cd -"
 
+# alias lf="lfub"
+
 PRIVATE_ALIAS="$HOME/.config/zsh/private_alias.zsh"
 if [ -f $PRIVATE_ALIAS ]; then
     source $PRIVATE_ALIAS
-else
-    print "404: $PRIVATE_ALIAS not found."
 fi
-
-# alias lf="lfub"

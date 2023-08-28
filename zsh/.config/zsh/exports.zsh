@@ -31,7 +31,7 @@ export GOPATH=$HOME/.local/share/go
 # Show every matching package without number of limitation.
 export EIX_LIMIT=0
 
-# export PATH=$PATH:"$HOME/.local/bin"
+export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 export PATH="$GOPATH/bin":"$HOME/go/bin":$PATH
@@ -41,9 +41,11 @@ export PATH="$HOME/.luarocks/bin":$PATH
 export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
 export OPENAI_API_HOST="https://api.openai.com"
 
-# For Nix
-export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
-
 # eval "$(fnm env)"
 eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
+
+PRIVATE_EXPORTS="$HOME/.config/zsh/private_exports.zsh"
+if [ -f $PRIVATE_EXPORTS ]; then
+    source $PRIVATE_EXPORTS
+fi
