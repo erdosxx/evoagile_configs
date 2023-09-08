@@ -60,9 +60,6 @@ volicon(){
 # volicon
 batticon
 
-# Enable screen saver
-xscreensaver -no-splash &
-
 #$HOME/.config/herbstluftwm/xmobar && herbstclient use_index 1
 #sleep 4 && trayer --edge top --align right --widthtype request --padding 3 --iconspacing 5 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x181818 --height 20 &
 
@@ -79,6 +76,9 @@ source "$HOME/.config/herbstluftwm/HLWM_themes/theme"
 source "$HOME/.config/herbstluftwm/winRules"
 
 sh $HOME/.config/xmodmap/swap_keys.sh
+
+# Enable screen saver
+xscreensaver -no-splash &
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1920x1080+0+0 3840x2160+1920+0

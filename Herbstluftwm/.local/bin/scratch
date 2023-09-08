@@ -11,7 +11,7 @@ case ${TITLE} in
     entry="urxvt -T ${TITLE} -e $HOME/.local/bin/bettercd.sh"
     ;;
   Neomutt)
-    entry="urxvt -T ${TITLE} -e neomutt"
+    entry="alacritty -T ${TITLE} -e neomutt"
     ;;
   Todo)
     entry="urxvt -T ${TITLE} -e $HOME/.local/bin/schedule.sh"

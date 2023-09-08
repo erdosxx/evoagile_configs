@@ -41,10 +41,10 @@ hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
 # hc keybind $Mod-Control-y spawn ~/.local/scripts/ytsubs.sh
 # install to-do for Void or Debian linux
 # hc keybind $Mod-Shift-t spawn ~/.local/bin/scratch Todo
-hc keybind $Mod-Shift-w spawn urxvt -T windows -e ~/.local/bin/windows.sh
+hc keybind $Mod-Control-w spawn urxvt -T windows -e ~/.local/bin/windows.sh
 hc keybind $Mod-a spawn urxvt
 hc keybind $Mod-t spawn alacritty
-hc keybind $Mod-w spawn wezterm
+hc keybind $Mod-w spawn /usr/bin/wezterm
 hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
@@ -53,13 +53,13 @@ hc keybind $Mod-Shift-r spawn rofi -show drun
 # no package for rofi-emoji in Gentoo
 # hc keybind $Mod-Control-e spawn rofi -show emoji
 # Manage virtual machines
-hc keybind $Mod-Shift-v spawn urxvt -T vmach.sh -e ~/.local/bin/vmach.sh
+hc keybind $Mod-Control-m spawn urxvt -T vmach.sh -e ~/.local/bin/vmach.sh
 # Void linux package manager
 # hc keybind $Mod-Shift-i spawn urxvt -title vsp2 -e ~/.local/bin/vsp2
 hc keybind $Mod-Shift-d spawn urxvt -T launch.sh -e ~/.local/bin/launch.sh 
 hc keybind $Mod-Control-e spawn urxvt -T configs -e ~/.local/bin/edit_configs.sh
 hc keybind $Mod-Control-t spawn urxvt -T themesel.sh -e ~/.local/bin/themesel.sh
-hc keybind $Mod-Shift-m chain , use_index 5 , spawn slack
+hc keybind $Mod-Shift-s chain , use_index 5 , spawn slack
 hc keybind $Mod-Shift-z chain , use_index 1 , spawn zotero
 hc keybind $Mod-Shift-o chain , use_index 6 , spawn obsidian
 
@@ -68,6 +68,7 @@ hc keybind $Mod-Shift-o chain , use_index 6 , spawn obsidian
 hc keybind $Mod-b chain , use_index 2 , spawn brave-bin
 hc keybind $Mod-Shift-q spawn ~/.local/bin/scratch2 qutebrowser 
 hc keybind $Mod-Shift-w spawn librewolf
+hc keybind $Mod-Shift-v spawn vivaldi
 # hc keybind $Mod-Shift-n spawn nyxt
 
 hc keybind Print spawn flameshot gui
@@ -78,8 +79,8 @@ hc keybind $Mod-Return spawn ~/.local/bin/scratchpad
 # Not correctly work everythime because of changing title when runing programs.
 hc keybind $Mod-Control-Return spawn ~/.local/bin/scratch scratchpad 
 # FM: file manager
-hc keybind $Mod-Shift-f spawn wezterm -e lf
-hc keybind $Mod-Shift-a spawn wezterm -e ranger
+hc keybind $Mod-Shift-f spawn /usr/bin/wezterm -e lf
+hc keybind $Mod-Shift-a spawn /usr/bin/wezterm -e ranger
 # hc keybind $Mod-Shift-a spawn urxvt -title ranger -e ranger
 hc keybind $Mod-n spawn ~/.local/bin/scratch Neomutt
 hc keybind $Mod-m chain , use_index 4 , spawn thunderbird
@@ -90,6 +91,10 @@ hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Qalculate-gtk
 # Open Wezterm scratchpad but Not fully working
 # This can be replaced by default scratch pad function.
 hc keybind $Mod-y spawn ~/.local/bin/scpad
+
+hc keybind $Mod-Shift-b spawn ~/.local/bin/find_bookmark.sh
+hc keybind $Mod-Shift-t spawn ~/.local/bin/find_bookmark_by_tag.sh
+hc keybind $Mod-Shift-m spawn urxvt -T Bookmark -e ~/.local/bin/add_bookmark.sh
 
 # focusing client #
 #-----------------#s
@@ -140,7 +145,7 @@ done
 
 # layouting #
 #-----------#
-hc keybind $Mod-Shift-t spawn urxvt -T newLayout -e ./.local/bin/new-layout.sh 
+hc keybind $Mod-Control-a spawn urxvt -T newLayout -e ./.local/bin/new-layout.sh 
 hc keybind $Mod-Control-x spawn urxvt -T dual_monitor \
   -e ~/.screenlayout/dual_with_LG.sh
 hc keybind $Mod-Shift-y spawn ./.local/bin/load-layout.sh

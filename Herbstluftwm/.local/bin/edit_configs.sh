@@ -2,9 +2,11 @@
 
 options=("alacritty
 bash
+bookmarks
 conky
 dunst
 dwm
+edit_configs
 herbstluftwm
 i3
 i3blocks
@@ -26,6 +28,7 @@ website
 xmobar
 xmonad
 xresources
+winRes
 zsh
 quit")
 
@@ -44,6 +47,9 @@ case "$choice" in
     bash)
         choice="$HOME/.bashrc"
         ;;
+    bookmarks)
+        choice="$HOME/.config/bookmarks/bookmarks.yaml"
+        ;;
     conky)
         choice="$HOME/.config/conky/conky.conf"
         ;;
@@ -52,6 +58,9 @@ case "$choice" in
         ;;
     dwm)
         choice="$HOME/.config/suckless/dwm-6.2/config.h"
+        ;;
+    edit_configs)
+        choice="$HOME/.local/bin/edit_configs.sh"
         ;;
     herbstluftwm)
         choice="$HOME/.config/herbstluftwm/autostart"
@@ -113,6 +122,9 @@ case "$choice" in
     xresources)
         choice="$HOME/.Xresources"
         ;;
+    winRes)
+        choice="$HOME/.config/herbstluftwm/winRules"
+        ;;
     zsh)
         choice="$HOME/.config/zsh/.zshrc"
         ;;
@@ -122,4 +134,3 @@ case "$choice" in
 esac
 # devour urxvt -e nvim "$choice"
 devour wezterm -e nvim "$choice"
-

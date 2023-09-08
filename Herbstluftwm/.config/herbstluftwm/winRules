@@ -10,6 +10,7 @@ hc rule title~'logout' floating=on floatplacement=center floating_geometry=320x2
 hc rule title~'vmach.sh' floating=on floatplacement=center floating_geometry=375x500
 hc rule title~'VmChoice' floating=on floatplacement=center floating_geometry=200x250
 hc rule title~'newLayout' floating=on floatplacement=center floating_geometry=200x250
+hc rule title~'Bookmark' floating=on floatplacement=center floating_geometry=800x250
 hc rule title~'themesel.sh' floating=on floatplacement=center floating_geometry=375x200
 
 # SCRATCHPADS #
