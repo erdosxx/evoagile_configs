@@ -19,6 +19,7 @@ nvim_keymaps
 picom
 polybar
 qutebrowser
+search_url
 spectrwm
 st
 surf
@@ -92,11 +93,14 @@ case "$choice" in
     qutebrowser)
         choice="$HOME/.config/qutebrowser/config.py"
         ;;
+    search_url)
+        choice="$HOME/.config/bookmarks/search_url.yaml"
+        ;;
     spectrwm)
         choice="$HOME/.spectrwm.conf"
         ;;
     st)
-        choice="$HOME/.config/suckless/st-0.8.4/config.h"
+        choice="$HOME/localgit/st/config.h"
         ;;
     sxhkd)
         choice="$HOME/.config/sxhkd/sxhkdrc"

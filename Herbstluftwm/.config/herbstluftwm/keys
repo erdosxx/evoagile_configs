@@ -43,8 +43,9 @@ hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
 # hc keybind $Mod-Shift-t spawn ~/.local/bin/scratch Todo
 hc keybind $Mod-Control-w spawn urxvt -T windows -e ~/.local/bin/windows.sh
 hc keybind $Mod-a spawn urxvt
-hc keybind $Mod-t spawn alacritty
-hc keybind $Mod-w spawn /usr/bin/wezterm
+hc keybind $Mod-Shift-t spawn alacritty
+hc keybind $Mod-w spawn ~/.cargo/bin/wezterm
+hc keybind $Mod-Shift-p spawn ~/.local/bin/st
 hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
@@ -79,11 +80,11 @@ hc keybind $Mod-Return spawn ~/.local/bin/scratchpad
 # Not correctly work everythime because of changing title when runing programs.
 hc keybind $Mod-Control-Return spawn ~/.local/bin/scratch scratchpad 
 # FM: file manager
-hc keybind $Mod-Shift-f spawn /usr/bin/wezterm -e lf
+hc keybind $Mod-Shift-u spawn /usr/bin/wezterm -e lf
 hc keybind $Mod-Shift-a spawn /usr/bin/wezterm -e ranger
 # hc keybind $Mod-Shift-a spawn urxvt -title ranger -e ranger
 hc keybind $Mod-n spawn ~/.local/bin/scratch Neomutt
-hc keybind $Mod-m chain , use_index 4 , spawn thunderbird
+hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
 hc keybind $Mod-z chain , use_index 7 , spawn zoom 
 # MPD client: ncmpcpp need to configured
 # hc keybind $Mod-t spawn scratch Music
@@ -92,22 +93,23 @@ hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Qalculate-gtk
 # This can be replaced by default scratch pad function.
 hc keybind $Mod-y spawn ~/.local/bin/scpad
 
-hc keybind $Mod-Shift-b spawn ~/.local/bin/find_bookmark.sh
-hc keybind $Mod-Shift-t spawn ~/.local/bin/find_bookmark_by_tag.sh
-hc keybind $Mod-Shift-m spawn urxvt -T Bookmark -e ~/.local/bin/add_bookmark.sh
+hc keybind $Mod-f spawn ~/.local/bin/find_bookmark.sh
+hc keybind $Mod-t spawn ~/.local/bin/find_bookmark_by_tag.sh
+hc keybind $Mod-m spawn urxvt -T Bookmark -e ~/.local/bin/add_bookmark.sh
+hc keybind $Mod-s spawn ~/.local/bin/gen_web_search.sh
 
 # focusing client #
 #-----------------#s
-hc keybind $Mod-h  focus left
-hc keybind $Mod-j  focus down
-hc keybind $Mod-k    focus up
+hc keybind $Mod-h focus left
+hc keybind $Mod-j focus down
+hc keybind $Mod-k focus up
 hc keybind $Mod-l focus right
 
 # moving clients in tiling and floating mode #
-hc keybind $Mod-Shift-j  shift down
-hc keybind $Mod-Shift-k    shift up
+hc keybind $Mod-Shift-j shift down
+hc keybind $Mod-Shift-k shift up
 hc keybind $Mod-Shift-l shift right
-hc keybind $Mod-Shift-h  shift left
+hc keybind $Mod-Shift-h shift left
 
 # splitting frames #
 #------------------#
@@ -150,7 +152,7 @@ hc keybind $Mod-Control-x spawn urxvt -T dual_monitor \
   -e ~/.screenlayout/dual_with_LG.sh
 hc keybind $Mod-Shift-y spawn ./.local/bin/load-layout.sh
 hc keybind $Mod-r remove
-hc keybind $Mod-f fullscreen toggle
+hc keybind $Mod-Shift-f fullscreen toggle
 hc keybind $Mod-Control-f set_attr clients.focus.floating toggle
 hc keybind $Mod-p pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
