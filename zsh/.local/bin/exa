@@ -1,1 +1,4 @@
-/usr/bin/eza
+#!/usr/bin/env bash
+
+EZA=$(which eza)
+[[ -z "$EZA" ]] && echo "eza not found." && exit 1 || "$EZA"
