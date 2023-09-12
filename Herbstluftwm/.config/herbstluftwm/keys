@@ -45,8 +45,8 @@ hc keybind $Mod-Control-w spawn urxvt -T windows -e ~/.local/bin/windows.sh
 hc keybind $Mod-a spawn urxvt
 hc keybind $Mod-Shift-t spawn alacritty
 hc keybind $Mod-w spawn ~/.cargo/bin/wezterm
-hc keybind $Mod-Shift-p spawn ~/.local/bin/st
-hc keybind $Mod-c spawn ~/.local/bin/conktoggle.sh
+hc keybind $Mod-c spawn ~/.local/bin/st
+hc keybind $Mod-Shift-g spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
 hc keybind $Mod-Control-d spawn dmenu_run -p Launch: -fn "Inconsolata Nerd Font":size=14 -l 10 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8'
@@ -94,7 +94,7 @@ hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Qalculate-gtk
 hc keybind $Mod-y spawn ~/.local/bin/scpad
 
 hc keybind $Mod-f spawn ~/.local/bin/find_bookmark.sh
-hc keybind $Mod-t spawn ~/.local/bin/find_bookmark_by_tag.sh
+hc keybind $Mod-e spawn ~/.local/bin/find_bookmark_by_tag.sh
 hc keybind $Mod-m spawn urxvt -T Bookmark -e ~/.local/bin/add_bookmark.sh
 hc keybind $Mod-s spawn ~/.local/bin/gen_web_search.sh
 
