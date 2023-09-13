@@ -30,7 +30,7 @@ if command -v bat &> /dev/null; then
 fi
 
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
+lfcd() {
     tmp="$(mktemp -uq)"
     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
     lf -last-dir-path="$tmp" "$@"
@@ -40,6 +40,14 @@ lfcd () {
     fi
 }
 bindkey -s '^o' '^ulfcd\n'
+
+cp_primary_to_clip() {
+  local PRIMARY=$(xclip -o -selection primary)
+  echo "$PRIMARY" | xclip -selection clipboard
+  notify-send "Copied $PRIMARY to clipboard"
+}
+
+bindkey -s '^b' '^ucp_primary_to_clip\n'
 
 # Set UK key board layout
 # setxkbmap -layout gb -variant "" -model latitude
