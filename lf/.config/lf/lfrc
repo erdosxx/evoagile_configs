@@ -22,7 +22,7 @@ set scrolloff 10
 set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
-set hidden
+# set hidden
 
 # set previewer '~/.config/lf/lf_kitty_preview'
 # set cleaner '~/.config/lf/lf_kitty_clean'

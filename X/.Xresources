@@ -1,1 +1,38 @@
+! Special
+foreground:   #E5E9F0
+background:   #2E3440
+cursorColor:  #E5E9F0
+
+! black
+color0: #2E3440
+color8: #4C566A
+
+! red
+color1: #BF616A
+color9: #BF616A
+
+! green
+color2:  #88C0D0
+color10: #88C0D0
+
+! yellow
+color3:  #5E81AC
+color11: #5E81AC
+
+! blue
+color4:  #EBCB8B
+color12: #EBCB8B
+
+! magenta
+color5:  #A3BE8C
+color13: #A3BE8C
+
+! cyan
+color6:  #D08770
+color14: #D08770
+
+! white
+color7:  #E5E9F0
+color15: #8FBCBB
+
 #include ".config/urxvt/urxvt.config"
