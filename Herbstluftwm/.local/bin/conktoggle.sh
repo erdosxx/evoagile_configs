@@ -13,5 +13,3 @@ then
 else
     herbstclient remove && pkill conky
 fi
-
-

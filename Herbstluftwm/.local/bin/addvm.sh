@@ -18,6 +18,3 @@ read -r os "$'\n'"
 
 virt-install --name="$distro" --vcpus="$cpu" --memory="$mem" --cdrom="$location" --disk size="$gb" --os-variant="$os"
 read -rp "Press Enter to continue" </dev/tty
-
-
-

@@ -137,4 +137,4 @@ case "$choice" in
         ;;
 esac
 # devour urxvt -e nvim "$choice"
-devour wezterm -e nvim "$choice"
+devour "$TERMINAL" -e nvim "$choice"

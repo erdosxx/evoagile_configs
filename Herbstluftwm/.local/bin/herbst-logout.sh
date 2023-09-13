@@ -17,4 +17,3 @@ case $SRL in
     *)
         ;;
 esac
-

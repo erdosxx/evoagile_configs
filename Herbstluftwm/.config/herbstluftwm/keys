@@ -2,6 +2,7 @@
 
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
+TERMINAL="$HOME/.local/bin/st"
 
 # REMOVE ALL EXISTING KEYBINDINGS #
 #---------------------------------#
@@ -9,7 +10,7 @@ hc keyunbind --all
 
 # System controls #
 #-----------------#
-hc keybind $Mod-Control-c spawn urxvt -T logout -e ~/.local/bin/herbst-logout.sh
+hc keybind $Mod-Control-c spawn "$TERMINAL" -T logout -e ~/.local/bin/herbst-logout.sh
 hc keybind $Mod-Control-r reload
 hc keybind $Mod-q close
 # lock screen
@@ -41,11 +42,12 @@ hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
 # hc keybind $Mod-Control-y spawn ~/.local/scripts/ytsubs.sh
 # install to-do for Void or Debian linux
 # hc keybind $Mod-Shift-t spawn ~/.local/bin/scratch Todo
-hc keybind $Mod-Control-w spawn urxvt -T windows -e ~/.local/bin/windows.sh
-hc keybind $Mod-a spawn urxvt
-hc keybind $Mod-Shift-t spawn alacritty
+hc keybind $Mod-Control-w spawn "$TERMINAL" -T windows -e ~/.local/bin/windows.sh
+hc keybind $Mod-t spawn ~/.local/bin/urxvt.sh
+hc keybind $Mod-Shift-t spawn ~/.local/bin/tabbed -c -r 2 alacritty --embed ''
 hc keybind $Mod-w spawn ~/.cargo/bin/wezterm
-hc keybind $Mod-c spawn ~/.local/bin/st
+hc keybind $Mod-a spawn ~/.local/bin/tabbed -c -r 2 ~/.local/bin/st -w ''
+hc keybind $Mod-Shift-a spawn ~/.local/bin/st
 hc keybind $Mod-Shift-g spawn ~/.local/bin/conktoggle.sh
 # run launchers #
 #---------------#
@@ -54,12 +56,12 @@ hc keybind $Mod-Shift-r spawn rofi -show drun
 # no package for rofi-emoji in Gentoo
 # hc keybind $Mod-Control-e spawn rofi -show emoji
 # Manage virtual machines
-hc keybind $Mod-Control-m spawn urxvt -T vmach.sh -e ~/.local/bin/vmach.sh
+hc keybind $Mod-Control-m spawn "$TERMINAL" -T vmach.sh -e ~/.local/bin/vmach.sh
 # Void linux package manager
-# hc keybind $Mod-Shift-i spawn urxvt -title vsp2 -e ~/.local/bin/vsp2
-hc keybind $Mod-Shift-d spawn urxvt -T launch.sh -e ~/.local/bin/launch.sh 
-hc keybind $Mod-Control-e spawn urxvt -T configs -e ~/.local/bin/edit_configs.sh
-hc keybind $Mod-Control-t spawn urxvt -T themesel.sh -e ~/.local/bin/themesel.sh
+# hc keybind $Mod-Shift-i spawn "$TERMINAL" -title vsp2 -e ~/.local/bin/vsp2
+hc keybind $Mod-Shift-d spawn "$TERMINAL" -T launch.sh -e ~/.local/bin/launch.sh 
+hc keybind $Mod-Control-e spawn "$TERMINAL" -T configs -e ~/.local/bin/edit_configs.sh
+hc keybind $Mod-Control-t spawn "$TERMINAL" -T themesel.sh -e ~/.local/bin/themesel.sh
 hc keybind $Mod-Shift-s chain , use_index 5 , spawn slack
 hc keybind $Mod-Shift-z chain , use_index 1 , spawn zotero
 hc keybind $Mod-Shift-o chain , use_index 6 , spawn obsidian
@@ -70,6 +72,7 @@ hc keybind $Mod-b chain , use_index 2 , spawn brave-bin
 hc keybind $Mod-Shift-q spawn ~/.local/bin/scratch2 qutebrowser 
 hc keybind $Mod-Shift-w spawn librewolf
 hc keybind $Mod-Shift-v spawn vivaldi
+hc keybind $Mod-Shift-x spawn opera
 # hc keybind $Mod-Shift-n spawn nyxt
 
 hc keybind Print spawn flameshot gui
@@ -80,9 +83,9 @@ hc keybind $Mod-Return spawn ~/.local/bin/scratchpad
 # Not correctly work everythime because of changing title when runing programs.
 hc keybind $Mod-Control-Return spawn ~/.local/bin/scratch scratchpad 
 # FM: file manager
-hc keybind $Mod-Shift-u spawn /usr/bin/wezterm -e lf
-hc keybind $Mod-Shift-a spawn /usr/bin/wezterm -e ranger
-# hc keybind $Mod-Shift-a spawn urxvt -title ranger -e ranger
+# hc keybind $Mod-Shift-u spawn "$TERMINAL" -e lf
+# hc keybind $Mod-Shift-a spawn "$TERMINAL" -e ranger
+# hc keybind $Mod-Shift-a spawn "$TERMINAL" -title ranger -e ranger
 hc keybind $Mod-n spawn ~/.local/bin/scratch Neomutt
 hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
 hc keybind $Mod-z chain , use_index 7 , spawn zoom 
@@ -93,10 +96,14 @@ hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Qalculate-gtk
 # This can be replaced by default scratch pad function.
 hc keybind $Mod-y spawn ~/.local/bin/scpad
 
-hc keybind $Mod-f spawn ~/.local/bin/find_bookmark.sh
-hc keybind $Mod-e spawn ~/.local/bin/find_bookmark_by_tag.sh
-hc keybind $Mod-m spawn urxvt -T Bookmark -e ~/.local/bin/add_bookmark.sh
+hc keybind $Mod-d spawn ~/.local/bin/find_bookmark.sh
+hc keybind $Mod-f spawn ~/.local/bin/find_bookmark_by_tag.sh
+hc keybind $Mod-g spawn "$TERMINAL" -T Bookmark -e ~/.local/bin/add_bookmark.sh
 hc keybind $Mod-s spawn ~/.local/bin/gen_web_search.sh
+
+hc keybind $Mod-x spawn ~/.local/bin/find_command.sh
+hc keybind $Mod-c spawn ~/.local/bin/find_command_by_tag.sh
+hc keybind $Mod-v spawn "$TERMINAL" -T Bookmark -e ~/.local/bin/add_command.sh
 
 # focusing client #
 #-----------------#s
@@ -147,8 +154,8 @@ done
 
 # layouting #
 #-----------#
-hc keybind $Mod-Control-a spawn urxvt -T newLayout -e ./.local/bin/new-layout.sh 
-hc keybind $Mod-Control-x spawn urxvt -T dual_monitor \
+hc keybind $Mod-Control-a spawn "$TERMINAL" -T newLayout -e ./.local/bin/new-layout.sh 
+hc keybind $Mod-Control-x spawn "$TERMINAL" -T dual_monitor \
   -e ~/.screenlayout/dual_with_LG.sh
 hc keybind $Mod-Shift-y spawn ./.local/bin/load-layout.sh
 hc keybind $Mod-r remove
@@ -178,4 +185,4 @@ hc mousebind $Mod-Button2 zoom
 hc mousebind $Mod-Button3 resize
 
 # chain
-hc keybind $Mod-Shift-e chain , split right 0.6 , focus right , spawn wezterm 
+hc keybind $Mod-Shift-e chain , split right 0.6 , focus right , spawn ~/.local/bin/st

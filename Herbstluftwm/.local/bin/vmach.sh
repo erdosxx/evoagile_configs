@@ -19,7 +19,7 @@ notify="$(notify-send "v-machine launcher" "launching $choice")"
 case "$choice" in
     Add)
         choice=~/.local/bin/addvm.sh
-        devour urxvt -title VmChoice -e $choice
+        devour "$TERMINAL" -title VmChoice -e $choice
         ;;
     Quit)
         notify-send "v-machine launcher" "no system selected" && exit 1

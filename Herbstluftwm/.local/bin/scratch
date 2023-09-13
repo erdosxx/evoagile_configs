@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 TITLE=$1
+TERMINAL="$HOME/.local/bin/st"
 
 case ${TITLE} in
 
 	scratchpad)
     # entry="urxvt -title scratchpad"
-    entry="urxvt -T ${TITLE}"
+    entry="$TERMINAL -T ${TITLE}"
     ;;
 	FM)
-    entry="urxvt -T ${TITLE} -e $HOME/.local/bin/bettercd.sh"
+    entry="$TERMINAL -T ${TITLE} -e $HOME/.local/bin/bettercd.sh"
     ;;
   Neomutt)
-    entry="alacritty -T ${TITLE} -e neomutt"
+    entry="$TERMINAL -T ${TITLE} -e neomutt"
     ;;
   Todo)
-    entry="urxvt -T ${TITLE} -e $HOME/.local/bin/schedule.sh"
+    entry="$TERMINAL -T ${TITLE} -e $HOME/.local/bin/schedule.sh"
     ;;
 esac
 
