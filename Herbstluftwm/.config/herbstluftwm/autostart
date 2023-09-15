@@ -110,3 +110,13 @@ for monitor in $(hc list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     "$panel" "$monitor" &
 done
+
+# Auto startup programs
+# Only run at the first time
+# Ref: https://herbstluftwm.org/faq.html#firstautostart
+if hc silent new_attr bool my_not_first_autostart ; then
+  slack &
+  brave-bin &
+  zotero &
+  obsidian &
+fi

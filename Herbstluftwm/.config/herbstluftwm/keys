@@ -3,6 +3,7 @@
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 TERMINAL="$HOME/.local/bin/st"
+REV_GOLDEN_RATIO=0.618 # 1/1.618
 
 # REMOVE ALL EXISTING KEYBINDINGS #
 #---------------------------------#
@@ -44,9 +45,9 @@ hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
 # hc keybind $Mod-Shift-t spawn ~/.local/bin/scratch Todo
 hc keybind $Mod-Control-w spawn "$TERMINAL" -T windows -e ~/.local/bin/windows.sh
 hc keybind $Mod-t spawn ~/.local/bin/urxvt.sh
-hc keybind $Mod-Shift-t spawn ~/.local/bin/tabbed -c -r 2 alacritty --embed ''
+hc keybind $Mod-Shift-t spawn ~/.local/bin/alacritty_tabbed.sh
 hc keybind $Mod-w spawn ~/.cargo/bin/wezterm
-hc keybind $Mod-a spawn ~/.local/bin/tabbed -c -r 2 ~/.local/bin/st -w ''
+hc keybind $Mod-a spawn ~/.local/bin/st_tabbed.sh
 hc keybind $Mod-Shift-a spawn ~/.local/bin/st
 hc keybind $Mod-Shift-g spawn ~/.local/bin/conktoggle.sh
 # run launchers #
@@ -87,7 +88,7 @@ hc keybind $Mod-Control-Return spawn ~/.local/bin/scratch scratchpad
 # hc keybind $Mod-Shift-a spawn "$TERMINAL" -e ranger
 # hc keybind $Mod-Shift-a spawn "$TERMINAL" -title ranger -e ranger
 hc keybind $Mod-n spawn ~/.local/bin/scratch Neomutt
-hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
+# hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
 hc keybind $Mod-z chain , use_index 7 , spawn zoom 
 # MPD client: ncmpcpp need to configured
 # hc keybind $Mod-t spawn scratch Music
@@ -120,8 +121,8 @@ hc keybind $Mod-Shift-h shift left
 
 # splitting frames #
 #------------------#
-hc keybind $Mod-u       split   bottom  0.6
-hc keybind $Mod-o       split   right   0.6
+hc keybind $Mod-u chain , split bottom $REV_GOLDEN_RATIO , focus down
+hc keybind $Mod-o chain , split right $REV_GOLDEN_RATIO , focus right
 
 # let the current frame explode into subframes #
 #----------------------------------------------#
@@ -185,4 +186,8 @@ hc mousebind $Mod-Button2 zoom
 hc mousebind $Mod-Button3 resize
 
 # chain
-hc keybind $Mod-Shift-e chain , split right 0.6 , focus right , spawn ~/.local/bin/st
+hc keybind $Mod-Shift-e chain , split right $REV_GOLDEN_RATIO , focus right , \
+  spawn ~/.local/bin/st_tabbed.sh
+# place slack to right hand side and keep left blank for Youtube music.
+hc keybind $Mod-Shift-m chain , use_index 5 , split right "$(awk "BEGIN {print 1 - $REV_GOLDEN_RATIO}")" , \
+  shift right , focus left , use_index 2

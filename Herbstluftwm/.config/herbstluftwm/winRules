@@ -13,6 +13,14 @@ hc rule title~'newLayout' floating=on floatplacement=center floating_geometry=20
 hc rule title~'Bookmark' floating=on floatplacement=center floating_geometry=800x250
 hc rule title~'themesel.sh' floating=on floatplacement=center floating_geometry=375x200
 
+
+# STARTUP APPS #
+#--------------#
+hc rule class='Zotero' tag=2
+hc rule class='Brave-browser' tag=3
+hc rule class='Slack' tag=6
+hc rule class='obsidian' tag=7
+
 # SCRATCHPADS #
 #-------------#
 hc rule title~'scratchpad' floating=on floatplacement=center floating_geometry=1300x900
