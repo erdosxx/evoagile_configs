@@ -13,7 +13,7 @@ hc keyunbind --all
 #-----------------#
 hc keybind $Mod-Control-c spawn "$TERMINAL" -T logout -e ~/.local/bin/herbst-logout.sh
 hc keybind $Mod-Control-r reload
-hc keybind $Mod-q close
+hc keybind $Mod-q close_and_remove
 # lock screen
 # hc keybind $Mod-Control-z spawn i3lock -i ~/Pictures/wallpapers/IMG_0581_1920_1080.PNG
 hc keybind $Mod-Control-z spawn xscreensaver-command -lock
@@ -46,7 +46,7 @@ hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
 hc keybind $Mod-Control-w spawn "$TERMINAL" -T windows -e ~/.local/bin/windows.sh
 hc keybind $Mod-t spawn ~/.local/bin/urxvt.sh
 hc keybind $Mod-Shift-t spawn ~/.local/bin/alacritty_tabbed.sh
-hc keybind $Mod-w spawn ~/.cargo/bin/wezterm
+hc keybind $Mod-w spawn wezterm
 hc keybind $Mod-a spawn ~/.local/bin/st_tabbed.sh
 hc keybind $Mod-Shift-a spawn ~/.local/bin/st
 hc keybind $Mod-Shift-g spawn ~/.local/bin/conktoggle.sh
