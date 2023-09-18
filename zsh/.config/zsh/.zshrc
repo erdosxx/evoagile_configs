@@ -18,7 +18,8 @@ plug "zap-zsh/vim"
 # source "$HOME/.config/zsh/shrink-path.plugin.zsh"
 source "$HOME/.config/zsh/zsh-prompt.zsh"
 plug "zap-zsh/fzf"
-plug "zap-zsh/exa"
+# plug "zap-zsh/exa"
+plug "$HOME/.config/zsh/plugins/eza"
 plug "zsh-users/zsh-syntax-highlighting"
 
 # keybinds
