@@ -16,7 +16,7 @@ fi
 
 # Environment variables set everywhere
 export EDITOR="nvim"
-export TERMINAL="urxvt"
+export TERMINAL="$HOME/.local/bin/st"
 export BROWSER="brave-bin"
 
 # XDG Paths

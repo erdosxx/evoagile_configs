@@ -2,7 +2,8 @@
 
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
-TERMINAL="$HOME/.local/bin/st"
+# TERMINAL is defined in ~/.xprofile
+# TERMINAL="$HOME/.local/bin/st"
 REV_GOLDEN_RATIO=0.618 # 1/1.618
 
 # REMOVE ALL EXISTING KEYBINDINGS #
@@ -50,6 +51,9 @@ hc keybind $Mod-w spawn wezterm
 hc keybind $Mod-a spawn ~/.local/bin/st_tabbed.sh
 hc keybind $Mod-Shift-a spawn ~/.local/bin/st
 hc keybind $Mod-Shift-g spawn ~/.local/bin/conktoggle.sh
+# hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
+hc keybind $Mod-z chain , use_index 7 , spawn zoom 
+
 # run launchers #
 #---------------#
 hc keybind $Mod-Control-d spawn dmenu_run -p Launch: -fn "Inconsolata Nerd Font":size=14 -l 10 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8'
@@ -81,15 +85,11 @@ hc keybind Print spawn flameshot gui
 # scratchpads #
 #-------------#
 hc keybind $Mod-Return spawn ~/.local/bin/scratchpad
-# Not correctly work everythime because of changing title when runing programs.
-hc keybind $Mod-Control-Return spawn ~/.local/bin/scratch scratchpad 
-# FM: file manager
+hc keybind $Mod-Control-Return spawn ~/.local/bin/scpad2
 # hc keybind $Mod-Shift-u spawn "$TERMINAL" -e lf
 # hc keybind $Mod-Shift-a spawn "$TERMINAL" -e ranger
 # hc keybind $Mod-Shift-a spawn "$TERMINAL" -title ranger -e ranger
 hc keybind $Mod-n spawn ~/.local/bin/scratch Neomutt
-# hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
-hc keybind $Mod-z chain , use_index 7 , spawn zoom 
 # MPD client: ncmpcpp need to configured
 # hc keybind $Mod-t spawn scratch Music
 hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Qalculate-gtk
