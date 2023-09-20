@@ -1,24 +1,18 @@
 #!/usr/bin/env bash
 
-# Support terminal: st
 CLASS_TITLE="scratchpad"
 
-term_process="$(xdotool search --class $CLASS_TITLE)"
-num_process=$(echo "$term_process" | wc -l)
+window_id="$(xdotool search --class $CLASS_TITLE)"
+num_process=$(echo "$window_id" | wc -l)
 [[ $num_process -gt 1 ]] && notify-send "Duplicated terminal process found." && exit 1
 
-if [ -z "$term_process" ]; then
-  $TERMINAL -T $CLASS_TITLE &
-  sleep 0.1
-  xdotool search --name $CLASS_TITLE set_window --class $CLASS_TITLE --classname $CLASS_TITLE
-  term_process="$(xdotool search --name $CLASS_TITLE)"
-  xdo hide "$term_process"
-  xdo show "$term_process"
+if [ -z "$window_id" ]; then
+  "$HOME"/.local/bin/tabbed -c -r 2 "$HOME"/.local/bin/st -w '' -T $CLASS_TITLE &
+  xdotool search --sync --name $CLASS_TITLE set_window --class $CLASS_TITLE --classname $CLASS_TITLE
+
+  window_id="$(xdotool search --class $CLASS_TITLE)"
+  xdo hide "$window_id" && xdo show "$window_id"
 else
   window_visible="$(xdotool search --onlyvisible --class $CLASS_TITLE)"
-    if [ -n "${window_visible}" ]; then
-        xdo hide "$term_process"
-    else
-        xdo show "$term_process"
-    fi
+  [[ -z "${window_visible}" ]] && xdo show "$window_id" || xdo hide "$window_id" 
 fi

@@ -84,8 +84,8 @@ hc keybind Print spawn flameshot gui
 
 # scratchpads #
 #-------------#
-hc keybind $Mod-Return spawn ~/.local/bin/scratchpad
-hc keybind $Mod-Control-Return spawn ~/.local/bin/scpad2
+hc keybind $Mod-Control-Return spawn ~/.local/bin/scratchpad
+hc keybind $Mod-Return spawn ~/.local/bin/scpad2
 # hc keybind $Mod-Shift-u spawn "$TERMINAL" -e lf
 # hc keybind $Mod-Shift-a spawn "$TERMINAL" -e ranger
 # hc keybind $Mod-Shift-a spawn "$TERMINAL" -title ranger -e ranger
