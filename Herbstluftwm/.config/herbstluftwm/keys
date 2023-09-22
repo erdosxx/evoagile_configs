@@ -54,6 +54,7 @@ hc keybind $Mod-Shift-a spawn ~/.local/bin/st
 hc keybind $Mod-Shift-g spawn ~/.local/bin/conktoggle.sh
 # hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
 hc keybind $Mod-z chain , use_index 7 , spawn zoom 
+hc keybind $Mod-Control-s spawn ~/.local/bin/screenkey_toggle.sh top medium
 
 # run launchers #
 #---------------#
