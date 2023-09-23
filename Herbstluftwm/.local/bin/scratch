@@ -13,6 +13,17 @@ case ${TITLE} in
     ;;
 esac
 
-xdotool search --onlyvisible --name "${TITLE}\$" windowunmap \
-    || xdotool search --name "${TITLE}\$" windowmap \
-    || $entry &
+window_id=$(xdotool search --name "${TITLE}\$")
+
+if [[ -z "$window_id" ]]; then
+  $entry &
+else
+  window_visible=$(xdotool search --onlyvisible --name "${TITLE}\$")
+  if [[ -z "$window_visible" ]]; then
+    herbstclient bring "$window_id"
+    xdo show "$window_id"
+  else
+    xdo hide "$window_id"
+  fi
+fi
+
