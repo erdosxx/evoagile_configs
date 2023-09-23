@@ -14,5 +14,11 @@ if [ -z "$window_id" ]; then
   xdo hide "$window_id" && xdo show "$window_id"
 else
   window_visible="$(xdotool search --onlyvisible --class $CLASS_TITLE)"
-  [[ -z "${window_visible}" ]] && xdo show "$window_id" || xdo hide "$window_id" 
+  if [[ -z "${window_visible}" ]]; then 
+    # Move window to current workspace.
+    herbstclient bring "$window_id"
+    xdo show "$window_id" 
+  else
+    xdo hide "$window_id" 
+  fi
 fi

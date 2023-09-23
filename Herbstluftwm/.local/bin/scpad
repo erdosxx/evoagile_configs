@@ -3,21 +3,22 @@
 PADCLASS="scpad_wezterm"
 WEZ_DEFAULT_NAME="zsh"
 
-wez_process="$(xdotool search --class ${PADCLASS})";
-if [ -z "$wez_process" ]; then
+window_id="$(xdotool search --class ${PADCLASS})";
+if [ -z "$window_id" ]; then
   # notify-send "wezterm scratch pad not found. Create new one."
   wezterm &
   sleep 0.5
   xdotool search --name ${WEZ_DEFAULT_NAME} set_window --class $PADCLASS --classname $PADCLASS
-  wez_process="$(xdotool search --class ${PADCLASS})";
-  xdo hide "$wez_process"
-  xdo show "$wez_process"
+  window_id="$(xdotool search --class ${PADCLASS})";
+  xdo hide "$window_id"
+  xdo show "$window_id"
   # notify-send "Changed class name for wezterm scratch pad"
 else
   wezclass_visible="$(xdotool search --onlyvisible --class ${PADCLASS})";
-    if [ -n "${wezclass_visible}" ]; then
-        xdo hide "$wez_process"
-    else
-        xdo show "$wez_process"
-    fi
+  if [ -n "${wezclass_visible}" ]; then
+    xdo hide "$window_id"
+  else
+    herbstclient bring "$window_id"
+    xdo show "$window_id"
+  fi
 fi
