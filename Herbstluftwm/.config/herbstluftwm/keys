@@ -27,12 +27,12 @@ hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume 0 +5%
 hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume 0 -5%
 hc keybind XF86AudioMute spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
 # hc keybind XF86AudioPlay spawn playerctl play-pause
-hc keybind $Mod-Control-p spawn playerctl play-pause
+hc keybind $Mod-F11 spawn playerctl play-pause
 # hc keybind XF86AudioNext spawn playerctl next
-hc keybind $Mod-Control-0 spawn playerctl next
+hc keybind $Mod-F12 spawn playerctl next
 # hc keybind XF86AudioPrev spawn playerctl previous
-hc keybind $Mod-Control-9 spawn playerctl previous
-hc keybind $Mod-Control-8 spawn playerctl stop
+hc keybind $Mod-F10 spawn playerctl previous
+hc keybind $Mod-Shift-F11 spawn playerctl stop
 # Volume and Mixer control
 hc keybind $Mod-Control-v spawn ~/.local/bin/scratch2 Pavucontrol
 hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
