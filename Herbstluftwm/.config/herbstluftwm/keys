@@ -42,7 +42,7 @@ hc keybind $Mod-Control-b spawn ~/.local/bin/scratch2 Blueman-manager
 # hc keybind $Mod-w spawn bgd
 # Check youtube subscribers
 # hc keybind $Mod-Control-y spawn ~/.local/scripts/ytsubs.sh
-hc keybind $Mod-Control-y spawn ~/.local/bin/reset_keymap.sh
+hc keybind $Mod-e spawn ~/.local/bin/reset_keymap.sh
 # install to-do for Void or Debian linux
 # hc keybind $Mod-Shift-t spawn ~/.local/bin/scratch Todo
 hc keybind $Mod-Control-w spawn "$TERMINAL" -T windows -e ~/.local/bin/windows.sh

@@ -24,7 +24,7 @@ hc rule class='obsidian' tag=7
 # SCRATCHPADS #
 #-------------#
 # hc rule title='scratchpad' floating=on floatplacement=center floating_geometry=1300x900
-hc rule class='scratchpad' floating=on floatplacement=center floating_geometry=1300x900
+hc rule class='ScratchPad' floating=on floatplacement=center floating_geometry=1300x900
 hc rule class='scpad_wezterm' floating=on floatplacement=center floating_geometry=1300x900
 hc rule title~'Ranger' floating=on floatplacement=center floating_geometry=1500x900
 hc rule title~'FM' floating=on floatplacement=center floating_geometry=1000x800

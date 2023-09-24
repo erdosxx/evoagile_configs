@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CLASS_TITLE="scratchpad"
+CLASS_TITLE="ScratchPad"
 
 window_id="$(xdotool search --class $CLASS_TITLE)"
 num_process=$(echo "$window_id" | wc -l)
