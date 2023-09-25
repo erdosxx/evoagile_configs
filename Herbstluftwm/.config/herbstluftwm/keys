@@ -157,10 +157,10 @@ done
 
 # layouting #
 #-----------#
-hc keybind $Mod-Control-a spawn "$TERMINAL" -T newLayout -e ./.local/bin/new-layout.sh 
+hc keybind $Mod-Control-a spawn "$TERMINAL" -T newLayout -e ~/.local/bin/new-layout.sh 
 hc keybind $Mod-Control-x spawn "$TERMINAL" -T dual_monitor \
   -e ~/.screenlayout/dual_with_LG.sh
-hc keybind $Mod-Shift-y spawn ./.local/bin/load-layout.sh
+hc keybind $Mod-Shift-y spawn ~/.local/bin/load-layout.sh
 hc keybind $Mod-r remove
 hc keybind $Mod-Shift-f fullscreen toggle
 hc keybind $Mod-Control-f set_attr clients.focus.floating toggle
@@ -184,8 +184,40 @@ hc keybind $Mod-Control-i jumpto urgent
 #-------#
 hc mouseunbind --all
 hc mousebind $Mod-Button1 move
+hc keybind $Mod-F4 spawn ~/.local/bin/mouse_drag.sh left_button right 20
+hc keybind $Mod-F1 spawn ~/.local/bin/mouse_drag.sh left_button left 20
+hc keybind $Mod-F2 spawn ~/.local/bin/mouse_drag.sh left_button down 20
+hc keybind $Mod-F3 spawn ~/.local/bin/mouse_drag.sh left_button up 20
+
+# Resizes the window into all four directions
+# while keeping the center of the window constant.
 hc mousebind $Mod-Button2 zoom
+hc keybind $Mod-F8 spawn ~/.local/bin/mouse_drag.sh middle_button right 20
+hc keybind $Mod-F5 spawn ~/.local/bin/mouse_drag.sh middle_button left 20
+hc keybind $Mod-F6 spawn ~/.local/bin/mouse_drag.sh middle_button down 20
+hc keybind $Mod-F7 spawn ~/.local/bin/mouse_drag.sh middle_button up 20
+
 hc mousebind $Mod-Button3 resize
+
+hc keybind $Mod-Right spawn xdotool mousemove_relative --polar 90 50
+hc keybind $Mod-Shift-Right spawn xdotool mousemove_relative --polar 90 20
+hc keybind $Mod-Left spawn xdotool mousemove_relative --polar 270 50
+hc keybind $Mod-Shift-Left spawn xdotool mousemove_relative --polar 270 20
+hc keybind $Mod-Up spawn xdotool mousemove_relative --polar 0 50 
+hc keybind $Mod-Shift-Up spawn xdotool mousemove_relative --polar 0 20
+hc keybind $Mod-Down spawn xdotool mousemove_relative --polar 180 50
+hc keybind $Mod-Shift-Down spawn xdotool mousemove_relative --polar 180 20
+
+hc keybind $Mod-Delete spawn xdotool click 1        # left mouse button
+hc keybind $Mod-Page_Up spawn xdotool click 1       # left mouse button
+hc keybind $Mod-End spawn xdotool click 2           # middle mouse button
+hc keybind $Mod-Page_Down spawn xdotool click 3     # right mouse button
+hc keybind $Mod-Control-Up spawn xdotool click 4    # wheel up button
+hc keybind $Mod-Control-Down spawn xdotool click 5  # wheel down button
+
+hc keybind $Mod-Insert spawn xdotool mousedown 1
+hc keybind $Mod-Home spawn xdotool mouseup 1
+
 
 # chain
 hc keybind $Mod-Shift-e chain , split right $REV_GOLDEN_RATIO , focus right , \
