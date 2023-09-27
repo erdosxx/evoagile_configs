@@ -5,6 +5,7 @@ Mod=Mod4   # Use the super key as the main modifier
 # TERMINAL is defined in ~/.xprofile
 # TERMINAL="$HOME/.local/bin/st"
 REV_GOLDEN_RATIO=0.618 # 1/1.618
+LEFT_GOLDEN_RATIO=0.382 # 1/1.618
 
 # REMOVE ALL EXISTING KEYBINDINGS #
 #---------------------------------#
@@ -97,7 +98,7 @@ hc keybind $Mod-n spawn ~/.local/bin/scratch Neomutt
 hc keybind $Mod-Shift-c spawn ~/.local/bin/scratch2 Qalculate-gtk
 # Open Wezterm scratchpad but Not fully working
 # This can be replaced by default scratch pad function.
-hc keybind $Mod-y spawn ~/.local/bin/scpad
+hc keybind $Mod-m spawn ~/.local/bin/scpad
 
 hc keybind $Mod-d spawn ~/.local/bin/find_bookmark.sh
 hc keybind $Mod-f spawn ~/.local/bin/find_bookmark_by_tag.sh
@@ -124,7 +125,9 @@ hc keybind $Mod-Shift-h shift left
 # splitting frames #
 #------------------#
 hc keybind $Mod-u chain , split bottom $REV_GOLDEN_RATIO , focus down
+hc keybind $Mod-i chain , split top $LEFT_GOLDEN_RATIO , focus up
 hc keybind $Mod-o chain , split right $REV_GOLDEN_RATIO , focus right
+hc keybind $Mod-y chain , split left $LEFT_GOLDEN_RATIO , focus left
 
 # let the current frame explode into subframes #
 #----------------------------------------------#
@@ -133,10 +136,10 @@ hc keybind $Mod-Control-space split explode
 # resizing frames and floating clients #
 #--------------------------------------#
 resizestep=0.02
-hc keybind $Mod-Control-h    resize left +$resizestep
-hc keybind $Mod-Control-j    resize down +$resizestep
-hc keybind $Mod-Control-k      resize up +$resizestep
-hc keybind $Mod-Control-l   resize right +$resizestep
+hc keybind $Mod-Control-Left    resize left +$resizestep
+hc keybind $Mod-Control-Down    resize down +$resizestep
+hc keybind $Mod-Control-Up      resize up +$resizestep
+hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags #
 #------#
@@ -208,12 +211,12 @@ hc keybind $Mod-Shift-Up spawn xdotool mousemove_relative --polar 0 20
 hc keybind $Mod-Down spawn xdotool mousemove_relative --polar 180 50
 hc keybind $Mod-Shift-Down spawn xdotool mousemove_relative --polar 180 20
 
-hc keybind $Mod-Delete spawn xdotool click 1        # left mouse button
-hc keybind $Mod-Page_Up spawn xdotool click 1       # left mouse button
-hc keybind $Mod-End spawn xdotool click 2           # middle mouse button
-hc keybind $Mod-Page_Down spawn xdotool click 3     # right mouse button
-hc keybind $Mod-Control-Up spawn xdotool click 4    # wheel up button
-hc keybind $Mod-Control-Down spawn xdotool click 5  # wheel down button
+hc keybind $Mod-Delete spawn xdotool click --clearmodifiers 1        # left mouse button
+hc keybind $Mod-Page_Up spawn xdotool click --clearmodifiers 1       # left mouse button
+hc keybind $Mod-End spawn xdotool click --clearmodifiers 2           # middle mouse button
+hc keybind $Mod-Page_Down spawn xdotool click --clearmodifiers 3     # right mouse button
+hc keybind $Mod-Control-k spawn xdotool click --clearmodifiers 4     # wheel up button
+hc keybind $Mod-Control-j spawn xdotool click --clearmodifiers 5     # wheel down button
 
 hc keybind $Mod-Insert spawn xdotool mousedown 1
 hc keybind $Mod-Home spawn xdotool mouseup 1

@@ -17,7 +17,7 @@ case $DIRECTION in
   left) degree=270;;
 esac
 
-xdotool click 1
+# xdotool click 1
 xdotool mousedown "$bt_id"
 xdotool mousemove_relative --polar "$degree" "$STEP"
 xdotool mouseup "$bt_id"
