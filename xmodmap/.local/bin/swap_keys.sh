@@ -33,3 +33,5 @@ xmodmap -e "keycode 105 = Hangul_Hanja notsign Hangul_Hanja notsign"
 # To input ¦: F9 + |(keycode 49)
 # To input €: F9 + 4(keycode 13)
 xmodmap -e "keysym F9 = ISO_Level3_Shift"
+
+xmodmap -e "keysym Caps_Lock = ISO_Level5_Shift"
