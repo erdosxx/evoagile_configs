@@ -38,7 +38,9 @@ export PATH="$GOPATH/bin":"$HOME/go/bin":$PATH
 export PATH="$HOME/node_modules/.bin":$PATH
 export PATH="$HOME/.luarocks/bin":$PATH
 
-export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
+if [[ -f $HOME/.config/openai/api_key ]]; then
+  export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
+fi
 
 # eval "$(fnm env)"
 eval "$(zoxide init zsh)"
