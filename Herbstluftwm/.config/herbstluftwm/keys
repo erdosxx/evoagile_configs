@@ -11,11 +11,12 @@ Mod=Mod4   # Use the super key as the main modifier
 # mod3        ISO_Level5_Shift (0xcb)
 # mod4        Super_L (0x40),  grave (0x86),  Super_L (0xce),  Hyper_L (0xcf)
 # mod5        ISO_Level3_Shift (0x5c)
+ALT=Mod1
 
 # TERMINAL is defined in ~/.xprofile
 # TERMINAL="$HOME/.local/bin/st"
 REV_GOLDEN_RATIO=0.618 # 1/1.618
-LEFT_GOLDEN_RATIO=0.382 # 1/1.618
+LEFT_GOLDEN_RATIO=0.382 # 2 - 1.618
 
 # REMOVE ALL EXISTING KEYBINDINGS #
 #---------------------------------#
@@ -97,7 +98,7 @@ hc keybind Print spawn flameshot gui
 
 # scratchpads #
 #-------------#
-hc keybind $Mod-Control-Return spawn ~/.local/bin/scratchpad
+hc keybind $Mod-$ALT-Return spawn ~/.local/bin/scratchpad
 hc keybind $Mod-Return spawn ~/.local/bin/scpad2
 # hc keybind $Mod-Shift-u spawn "$TERMINAL" -e lf
 # hc keybind $Mod-Shift-a spawn "$TERMINAL" -e ranger
@@ -127,10 +128,10 @@ hc keybind $Mod-k focus up
 hc keybind $Mod-l focus right
 
 # moving clients in tiling and floating mode #
-hc keybind $Mod-Shift-j shift down
-hc keybind $Mod-Shift-k shift up
-hc keybind $Mod-Shift-l shift right
-hc keybind $Mod-Shift-h shift left
+hc keybind $Mod-$ALT-Shift-j shift down
+hc keybind $Mod-$ALT-Shift-k shift up
+hc keybind $Mod-$ALT-Shift-l shift right
+hc keybind $Mod-$ALT-Shift-h shift left
 
 # splitting frames #
 #------------------#
@@ -212,41 +213,39 @@ hc keybind $Mod-F7 spawn ~/.local/bin/mouse_drag.sh middle_button up 20
 
 hc mousebind $Mod-Button3 resize
 
-hc keybind $Mod-Right spawn xdotool mousemove_relative --polar 90 50
-hc keybind $Mod-Mod1-l spawn xdotool mousemove_relative --polar 90 50
-hc keybind $Mod-Shift-Right spawn xdotool mousemove_relative --polar 90 20
+hc keybind $Mod-$ALT-l spawn xdotool mousemove_relative --polar 90 50
 hc keybind $Mod-Mod3-l spawn xdotool mousemove_relative --polar 90 20
-hc keybind $Mod-Left spawn xdotool mousemove_relative --polar 270 50
-hc keybind $Mod-Mod1-h spawn xdotool mousemove_relative --polar 270 50
-hc keybind $Mod-Shift-Left spawn xdotool mousemove_relative --polar 270 20
+hc keybind $Mod-$ALT-h spawn xdotool mousemove_relative --polar 270 50
 hc keybind $Mod-Mod3-h spawn xdotool mousemove_relative --polar 270 20
-hc keybind $Mod-Up spawn xdotool mousemove_relative --polar 0 50 
-hc keybind $Mod-Mod1-k spawn xdotool mousemove_relative --polar 0 50 
-hc keybind $Mod-Shift-Up spawn xdotool mousemove_relative --polar 0 20
+hc keybind $Mod-$ALT-k spawn xdotool mousemove_relative --polar 0 50 
 hc keybind $Mod-Mod3-k spawn xdotool mousemove_relative --polar 0 20
-hc keybind $Mod-Down spawn xdotool mousemove_relative --polar 180 50
-hc keybind $Mod-Mod1-j spawn xdotool mousemove_relative --polar 180 50
-hc keybind $Mod-Shift-Down spawn xdotool mousemove_relative --polar 180 20
+hc keybind $Mod-$ALT-j spawn xdotool mousemove_relative --polar 180 50
 hc keybind $Mod-Mod3-j spawn xdotool mousemove_relative --polar 180 20
+
+hc keybind $Mod-Shift-l spawn xdotool mousemove 1440 280   # north-east of the screen 
+hc keybind $Mod-Shift-h spawn xdotool mousemove 480 280    # north-west of the screen 
+hc keybind $Mod-Shift-k spawn xdotool mousemove 1440 820   # south-east of the screen
+hc keybind $Mod-Shift-j spawn xdotool mousemove 480 820    # south-west of the screen
+hc keybind $Mod-Shift-u spawn xdotool mousemove 960 540    # center of the screen
 
 hc keybind $Mod-Delete spawn xdotool click --clearmodifiers 1        # left mouse button
 hc keybind $Mod-Page_Up spawn xdotool click --clearmodifiers 1       # left mouse button
-hc keybind $Mod-Mod1-n spawn xdotool click --clearmodifiers 1       # left mouse button
+hc keybind $Mod-$ALT-n spawn xdotool click --clearmodifiers 1       # left mouse button
 hc keybind $Mod-Mod3-n spawn xdotool click --clearmodifiers 1       # left mouse button
 hc keybind $Mod-End spawn xdotool click --clearmodifiers 2           # middle mouse button
-hc keybind $Mod-Mod1-m spawn xdotool click --clearmodifiers 2           # middle mouse button
+hc keybind $Mod-$ALT-m spawn xdotool click --clearmodifiers 2           # middle mouse button
 hc keybind $Mod-Mod3-m spawn xdotool click --clearmodifiers 2           # middle mouse button
 hc keybind $Mod-Page_Down spawn xdotool click --clearmodifiers 3     # right mouse button
-hc keybind $Mod-Mod1-b spawn xdotool click --clearmodifiers 3     # right mouse button
+hc keybind $Mod-$ALT-b spawn xdotool click --clearmodifiers 3     # right mouse button
 hc keybind $Mod-Mod3-b spawn xdotool click --clearmodifiers 3     # right mouse button
 hc keybind $Mod-Control-k spawn xdotool click --clearmodifiers 4     # wheel up button
 hc keybind $Mod-Control-j spawn xdotool click --clearmodifiers 5     # wheel down button
 
 hc keybind $Mod-Insert spawn xdotool mousedown 1
-hc keybind $Mod-Mod1-v spawn xdotool mousedown 1
+hc keybind $Mod-$ALT-v spawn xdotool mousedown 1
 hc keybind $Mod-Mod3-v spawn xdotool mousedown 1
 hc keybind $Mod-Home spawn xdotool mouseup 1
-hc keybind $Mod-Mod1-c spawn xdotool mouseup 1
+hc keybind $Mod-$ALT-c spawn xdotool mouseup 1
 hc keybind $Mod-Mod3-c spawn xdotool mouseup 1
 
 
