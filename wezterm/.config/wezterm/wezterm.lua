@@ -44,7 +44,9 @@ end
 config.color_scheme = "nord"
 
 config.font_size = 13.0
---[[ config.font = wezterm.font("FiraCode Nerd Font") ]]
+--[[ config.font = wezterm.font("JetBrainsMono Nerd Font Mono") ]]
+config.font = wezterm.font("FiraCode Nerd Font Mono")
+--[[ config.font = wezterm.font("JuliaMono Nerd Font Mono") ]]
 
 -- and finally, return the configuration to wezterm
 config.xim_im_name = "fcitx"

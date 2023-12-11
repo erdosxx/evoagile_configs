@@ -23,7 +23,8 @@ hc rule class='obsidian' tag=7
 
 # SCRATCHPADS #
 #-------------#
-hc rule title~'scratchpad' floating=on floatplacement=center floating_geometry=1300x900
+# hc rule title='scratchpad' floating=on floatplacement=center floating_geometry=1300x900
+hc rule class='ScratchPad' floating=on floatplacement=center floating_geometry=1300x900
 hc rule class='scpad_wezterm' floating=on floatplacement=center floating_geometry=1300x900
 hc rule title~'Ranger' floating=on floatplacement=center floating_geometry=1500x900
 hc rule title~'FM' floating=on floatplacement=center floating_geometry=1000x800
@@ -32,7 +33,7 @@ hc rule class='qutebrowser' floating=on floatplacement=center floating_geometry=
 hc rule class='Qalculate-gtk' floating=on floatplacement=center floating_geometry=900x500
 hc rule class='Pavucontrol' floating=on floatplacement=center floating_geometry=900x500
 hc rule class='Blueman-manager' floating=on floatplacement=center floating_geometry=900x500
-hc rule title='Neomutt' floating=on floatplacement=center floating_geometry=1500x800
+hc rule title='Neomutt' floating=on floatplacement=center floating_geometry=1800x1000
 hc rule title~'Music' floating=on floatplacement=center floating_geometry=1200x800
 hc rule title~'Todo' floating=on floatplacement=center floating_geometry=1000x650
 
