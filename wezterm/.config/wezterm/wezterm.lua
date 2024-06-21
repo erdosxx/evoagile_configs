@@ -43,7 +43,7 @@ end
 -- For example, changing the color scheme:
 config.color_scheme = "nord"
 
-config.font_size = 13.0
+config.font_size = 22.0
 --[[ config.font = wezterm.font("JetBrainsMono Nerd Font Mono") ]]
 --[[ config.font = wezterm.font("FiraCode Nerd Font Mono") ]]
 config.font = wezterm.font("JuliaMono Nerd Font Mono")

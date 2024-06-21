@@ -3,6 +3,7 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 set selection-clipboard clipboard
+set scroll-step 150
 map u scroll half-up
 map d scroll half-down
 map D toggle_page_mode
@@ -14,3 +15,5 @@ map g goto top
 map <C-i> recolor
 map <C-k> zoom in
 map <C-j> zoom out
+map H jumplist backward
+map L jumplist forward

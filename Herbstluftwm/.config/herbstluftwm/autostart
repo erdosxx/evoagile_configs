@@ -9,33 +9,32 @@ hc emit_hook reload
 # AUTOSTART #
 #-----------#
 
+launch_process() {
+  local process="$1"
+
+  pfshot="$(pidof "$process")"
+  if [[ "$pfshot" -lt 1 ]];
+  then 
+    $process &
+  else
+    pkill "$process";
+    $process &
+  fi
+}
+
 # Screenshots
-cflameshot(){
-    pfshot="$(pidof flameshot)"
-    if [[ "$pfshot" -lt 1 ]];
-    then 
-        flameshot &
-    else
-        pkill flameshot;
-        flameshot &
-    fi
-}
+launch_process flameshot
 
-cflameshot
+launch_process parcellite
 
-# Clipboard manager
-cparcellite() {
-    pfshot="$(pidof parcellite)"
-    if [[ "$pfshot" -lt 1 ]];
-    then 
-        parcellite &
-    else
-        pkill parcellite;
-        parcellite &
-    fi
-}
+launch_process fcitx5
 
-cparcellite
+launch_process imwheel
+
+launch_process gentoo-pipewire-launcher
+# launch_process pipewire
+# launch_process pipewire-pulse
+# launch_process wireplumber
 
 # screen effect
 # picom -b
@@ -54,25 +53,19 @@ nm-applet &
 
 batticon(){
     batt="$(pidof cbatticon)"
-    if [[ "$batt" -lt 1 ]];
-    then 
-        cbatticon -i notification /sys/class/power_supply/BAT0 &
-    else
+    if [[ "$batt" -ge 1 ]]; then 
         pkill cbatticon;
-        cbatticon -i notification /sys/class/power_supply/BAT0 &
     fi
+    cbatticon --icon-type symbolic --hide-notification /sys/class/power_supply/BAT0 &
 }
 # Palse audio control applet
 # pa-applet does not work.
 volicon(){
     vol="$(pidof pa-applet)"
-    if [[ "$vol" -lt 1 ]];
-    then 
-        "$HOME/.local/bin/pa-applet" &
-    else
+    if [[ "$vol" -ge 1 ]]; then 
         pkill pa-applet;
-        "$HOME/.local/bin/pa-applet" &
     fi
+    "$HOME/.local/bin/pa-applet" &
 }
 # volicon
 batticon
@@ -119,4 +112,10 @@ if hc silent new_attr bool my_not_first_autostart ; then
   brave-bin &
   zotero &
   obsidian &
+  element-desktop &
+  microsoft-edge-stable &
+  # After loading, remove rule to define workspace for each startup program.
+  sleep 60
+  # wait
+  hc unrule 'startup' 
 fi

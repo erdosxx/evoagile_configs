@@ -17,7 +17,11 @@ export MYURXVTRC="$HOME/.config/urxvt/urxvt.config"
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
-export XDG_RUNTIME_DIR=/tmp/"runtime-$(whoami)"
+# export XDG_RUNTIME_DIR=/tmp/"runtime-$(whoami)"
+# Ensure XDG_RUNTIME_DIR is set
+if test -z "$XDG_RUNTIME_DIR"; then
+    export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
+fi
 
 export EDITOR="nvim"
 export TERMINAL="$HOME/.local/bin/st"
@@ -37,6 +41,9 @@ export PATH="$HOME/.cargo/bin":$PATH
 export PATH="$GOPATH/bin":"$HOME/go/bin":$PATH
 export PATH="$HOME/node_modules/.bin":$PATH
 export PATH="$HOME/.luarocks/bin":$PATH
+export PATH="$HOME/context/tex/texmf-linux-64/bin":$PATH
+
+export OSFONTDIR="$HOME/.local/share/fonts:/usr/share/fonts"
 
 if [[ -f $HOME/.config/openai/api_key ]]; then
   export OPENAI_API_KEY=$(cat $HOME/.config/openai/api_key)
