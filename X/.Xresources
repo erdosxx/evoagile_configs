@@ -35,4 +35,7 @@ color14: #D08770
 color7:  #E5E9F0
 color15: #8FBCBB
 
+Xcursor.size: 16
+Xft.dpi: 172
+
 #include ".config/urxvt/urxvt.config"

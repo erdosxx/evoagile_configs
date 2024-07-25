@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Mod=Mod1    # Use alt as the main modifier
-Mod=Mod4   # Use the super key as the main modifier
+Mod=Mod4 # Use the super key as the main modifier
 # xmodmap -pm
 # shift       Shift_L (0x32),  Escape (0x3e)
 # lock        Caps_Lock (0x25)
@@ -15,7 +15,7 @@ ALT=Mod1
 
 # TERMINAL is defined in ~/.xprofile
 # TERMINAL="$HOME/.local/bin/st"
-REV_GOLDEN_RATIO=0.618 # 1/1.618
+REV_GOLDEN_RATIO=0.618  # 1/1.618
 LEFT_GOLDEN_RATIO=0.382 # 2 - 1.618
 
 # REMOVE ALL EXISTING KEYBINDINGS #
@@ -65,7 +65,7 @@ hc keybind $Mod-a spawn ~/.local/bin/st_tabbed.sh
 hc keybind $Mod-Shift-a spawn ~/.local/bin/st
 hc keybind $Mod-Shift-g spawn ~/.local/bin/conktoggle.sh
 # hc keybind $Mod-Shift-m chain , use_index 4 , spawn thunderbird
-hc keybind $Mod-z chain , use_index 7 , spawn ~/.local/bin/zoom.sh 
+hc keybind $Mod-z chain , use_index 7 , spawn ~/.local/bin/zoom.sh
 hc keybind $Mod-Control-s spawn ~/.local/bin/screenkey_toggle.sh top medium
 
 # run launchers #
@@ -78,7 +78,7 @@ hc keybind $Mod-Shift-r spawn rofi -matching fuzzy -show drun
 hc keybind $Mod-Control-m spawn "$TERMINAL" -T vmach.sh -e ~/.local/bin/vmach.sh
 # Void linux package manager
 # hc keybind $Mod-Shift-i spawn "$TERMINAL" -title vsp2 -e ~/.local/bin/vsp2
-hc keybind $Mod-Shift-d spawn "$TERMINAL" -T launch.sh -e ~/.local/bin/launch.sh 
+hc keybind $Mod-Shift-d spawn "$TERMINAL" -T launch.sh -e ~/.local/bin/launch.sh
 hc keybind $Mod-Control-e spawn "$TERMINAL" -T configs -e ~/.local/bin/edit_configs.sh
 hc keybind $Mod-Control-t spawn "$TERMINAL" -T themesel.sh -e ~/.local/bin/themesel.sh
 hc keybind $Mod-Shift-s chain , use_index 5 , spawn slack
@@ -89,7 +89,7 @@ hc keybind $Mod-Shift-o chain , use_index 6 , spawn obsidian
 #----------#
 # hc keybind $Mod-b chain , use_index 2 , spawn brave-bin
 hc keybind $Mod-b spawn brave-bin
-hc keybind $Mod-Shift-q spawn ~/.local/bin/scratch2 qutebrowser 
+hc keybind $Mod-Shift-q spawn ~/.local/bin/scratch2 qutebrowser
 hc keybind $Mod-Shift-w spawn librewolf
 hc keybind $Mod-Shift-v spawn vivaldi
 hc keybind $Mod-Shift-x spawn opera
@@ -149,51 +149,50 @@ hc keybind $Mod-Control-space split explode
 # resizing frames and floating clients #
 #--------------------------------------#
 resizestep=0.02
-hc keybind $Mod-Control-Left    resize left +$resizestep
-hc keybind $Mod-Control-Down    resize down +$resizestep
-hc keybind $Mod-Control-Up      resize up +$resizestep
-hc keybind $Mod-Control-Right   resize right +$resizestep
+hc keybind $Mod-Control-Left resize left +$resizestep
+hc keybind $Mod-Control-Down resize down +$resizestep
+hc keybind $Mod-Control-Up resize up +$resizestep
+hc keybind $Mod-Control-Right resize right +$resizestep
 
 # tags #
 #------#
 #                             scratchpad
 #                             |
 #                             v
-#   tag 1 2 3 4 5 6  7  8  9  0 
+#   tag 1 2 3 4 5 6  7  8  9  0
 # index 0 1 2 3 4 5  6  7  8  9
 #   key 1 2 3 4 5 F1 F2 F3 F4 0
-tag_names=( {1..9} )
+tag_names=({1..9})
 
 hc rename default "${tag_names[0]}" || true
 hc set default_frame_layout horizontal
 hc set_layout horizontal
 
-for i in "${!tag_names[@]}" ; do
-    hc add "${tag_names[$i]}"
+for i in "${!tag_names[@]}"; do
+	hc add "${tag_names[$i]}"
 
-    if [ "$i" -lt 5 ]; then
-      key="${tag_names[$i]}"
-    else
-      key="F$((i - 4))"
-    fi
+	if [ "$i" -lt 5 ]; then
+		key="${tag_names[$i]}"
+	else
+		key="F$((i - 4))"
+	fi
 
-    if [ -n "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
-        hc keybind "$Mod-Shift-$key" move_index "$i"
-    fi
+	if [ -n "$key" ]; then
+		hc keybind "$Mod-$key" use_index "$i"
+		hc keybind "$Mod-Shift-$key" move_index "$i"
+	fi
 done
 
 # For scratchpad
 # scratchpad will be added by ~/.local/bin/scratchpad
-hc keybind $Mod-0 use_index 9
-hc keybind $Mod-Shift-0 move_index 9
-
+hc keybind $Mod-backslash use_index 9
+hc keybind $Mod-Shift-backslash move_index 9
 
 # layouting #
 #-----------#
-hc keybind $Mod-Control-a spawn "$TERMINAL" -T newLayout -e ~/.local/bin/new-layout.sh 
+hc keybind $Mod-Control-a spawn "$TERMINAL" -T newLayout -e ~/.local/bin/new-layout.sh
 hc keybind $Mod-Control-x spawn "$TERMINAL" -T dual_monitor \
-  -e ~/.screenlayout/dual_with_LG.sh
+	-e ~/.screenlayout/dual_with_LG.sh
 hc keybind $Mod-Shift-y spawn ~/.local/bin/load-layout.sh
 hc keybind $Mod-r remove
 hc keybind $Mod-Shift-f fullscreen toggle
@@ -203,15 +202,15 @@ hc keybind $Mod-p pseudotile toggle
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
 hc keybind $Mod-space \
-  or , and . compare tags.focus.curframe_wcount = 2 \
-  . cycle_layout +1 vertical horizontal max vertical grid \
-  , cycle_layout +1
+	or , and . compare tags.focus.curframe_wcount = 2 \
+	. cycle_layout +1 vertical horizontal max vertical grid \
+	, cycle_layout +1
 
 # focus #
 #-------#
-hc keybind $Mod-BackSpace   cycle_monitor
-hc keybind $Mod-Tab         cycle_all +1
-hc keybind $Mod-Shift-Tab   cycle_all -1
+hc keybind $Mod-BackSpace cycle_monitor
+hc keybind $Mod-Tab cycle_all +1
+hc keybind $Mod-Shift-Tab cycle_all -1
 hc keybind $Mod-Control-i jumpto urgent
 
 # MOUSE #
@@ -237,31 +236,31 @@ hc keybind $Mod-$ALT-l spawn xdotool mousemove_relative --polar 90 50
 hc keybind $Mod-Mod3-l spawn xdotool mousemove_relative --polar 90 20
 hc keybind $Mod-$ALT-h spawn xdotool mousemove_relative --polar 270 50
 hc keybind $Mod-Mod3-h spawn xdotool mousemove_relative --polar 270 20
-hc keybind $Mod-$ALT-k spawn xdotool mousemove_relative --polar 0 50 
+hc keybind $Mod-$ALT-k spawn xdotool mousemove_relative --polar 0 50
 hc keybind $Mod-Mod3-k spawn xdotool mousemove_relative --polar 0 20
 hc keybind $Mod-$ALT-j spawn xdotool mousemove_relative --polar 180 50
 hc keybind $Mod-Mod3-j spawn xdotool mousemove_relative --polar 180 20
 
-hc keybind $Mod-Shift-l spawn xdotool mousemove 1440 280   # north-east of the screen 
-hc keybind $Mod-Shift-h spawn xdotool mousemove 480 280    # north-west of the screen 
-hc keybind $Mod-Shift-k spawn xdotool mousemove 1440 820   # south-east of the screen
-hc keybind $Mod-Shift-j spawn xdotool mousemove 480 820    # south-west of the screen
-hc keybind $Mod-Shift-u spawn xdotool mousemove 960 540    # center of the screen
+hc keybind $Mod-Shift-l spawn xdotool mousemove 1440 280 # north-east of the screen
+hc keybind $Mod-Shift-h spawn xdotool mousemove 480 280  # north-west of the screen
+hc keybind $Mod-Shift-k spawn xdotool mousemove 1440 820 # south-east of the screen
+hc keybind $Mod-Shift-j spawn xdotool mousemove 480 820  # south-west of the screen
+hc keybind $Mod-Shift-u spawn xdotool mousemove 960 540  # center of the screen
 
-hc keybind $Mod-Delete spawn xdotool click --clearmodifiers 1        # left mouse button
-hc keybind $Mod-Page_Up spawn xdotool click --clearmodifiers 1       # left mouse button
-hc keybind $Mod-$ALT-n spawn xdotool click --clearmodifiers 1       # left mouse button
-hc keybind $Mod-Mod3-n spawn xdotool click --clearmodifiers 1       # left mouse button
-hc keybind $Mod-End spawn xdotool click --clearmodifiers 2           # middle mouse button
-hc keybind $Mod-$ALT-m spawn xdotool click --clearmodifiers 2           # middle mouse button
-hc keybind $Mod-Mod3-m spawn xdotool click --clearmodifiers 2           # middle mouse button
-hc keybind $Mod-Page_Down spawn xdotool click --clearmodifiers 3     # right mouse button
-hc keybind $Mod-$ALT-b spawn xdotool click --clearmodifiers 3     # right mouse button
-hc keybind $Mod-Mod3-b spawn xdotool click --clearmodifiers 3     # right mouse button
+hc keybind $Mod-Delete spawn xdotool click --clearmodifiers 1    # left mouse button
+hc keybind $Mod-Page_Up spawn xdotool click --clearmodifiers 1   # left mouse button
+hc keybind $Mod-$ALT-n spawn xdotool click --clearmodifiers 1    # left mouse button
+hc keybind $Mod-Mod3-n spawn xdotool click --clearmodifiers 1    # left mouse button
+hc keybind $Mod-End spawn xdotool click --clearmodifiers 2       # middle mouse button
+hc keybind $Mod-$ALT-m spawn xdotool click --clearmodifiers 2    # middle mouse button
+hc keybind $Mod-Mod3-m spawn xdotool click --clearmodifiers 2    # middle mouse button
+hc keybind $Mod-Page_Down spawn xdotool click --clearmodifiers 3 # right mouse button
+hc keybind $Mod-$ALT-b spawn xdotool click --clearmodifiers 3    # right mouse button
+hc keybind $Mod-Mod3-b spawn xdotool click --clearmodifiers 3    # right mouse button
 # hc keybind $Mod-Control-k spawn xdotool click --clearmodifiers 4     # wheel up button
 # hc keybind $Mod-Control-j spawn xdotool click --clearmodifiers 5     # wheel down button
-hc keybind $ALT-k spawn xdotool click --clearmodifiers 4     # wheel up button
-hc keybind $ALT-j spawn xdotool click --clearmodifiers 5     # wheel down button
+hc keybind $ALT-k spawn xdotool click --clearmodifiers 4 # wheel up button
+hc keybind $ALT-j spawn xdotool click --clearmodifiers 5 # wheel down button
 
 hc keybind $Mod-Insert spawn xdotool mousedown 1
 hc keybind $Mod-$ALT-v spawn xdotool mousedown 1
@@ -274,7 +273,7 @@ hc keybind $Mod-m spawn ~/.local/bin/delete_inputs.sh
 
 # chain
 hc keybind $Mod-Shift-e chain , split right $REV_GOLDEN_RATIO , focus right , \
-  spawn ~/.local/bin/st_tabbed.sh
+	spawn ~/.local/bin/st_tabbed.sh
 # place slack to right hand side and keep left blank for Youtube music.
 hc keybind $Mod-Shift-m chain , use_index 5 , split right "$(awk "BEGIN {print 1 - $REV_GOLDEN_RATIO}")" , \
-  shift right , focus left , use_index 2
+	shift right , focus left , use_index 2

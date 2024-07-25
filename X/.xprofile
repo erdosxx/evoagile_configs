@@ -17,8 +17,9 @@ export XDG_DATA_HOME=$HOME/.local/share
 # zsh config dir
 export ZDOTDIR=$HOME/.config/zsh
 
-export GDK_DPI_SCALE=1.7
-export QT_SCALE_FACTOR=1.7
-
+# by setting .Xresource Xft.dpi: 172
+# following settings are not needed
+# export GDK_DPI_SCALE=1.7
+# export QT_SCALE_FACTOR=1.7
 
 # vim: ft=sh

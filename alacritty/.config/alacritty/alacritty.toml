@@ -54,7 +54,7 @@ cursor = "#d8dee9"
 text = "#2e3440"
 
 [font]
-size = 9.0
+size = 12.0
 
 [font.bold]
 family = "JuliaMono Nerd Font Mono"
@@ -71,3 +71,10 @@ style = "Italic"
 [font.normal]
 family = "JuliaMono Nerd Font Mono"
 style = "Regular"
+
+[keyboard]
+bindings = [
+  { key = "K", mods = "Control|Shift", action = "IncreaseFontSize" },
+  { key = "J", mods = "Control|Shift", action = "DecreaseFontSize" },
+  { key = ")", mods = "Control|Shift", action = "ResetFontSize" }
+]

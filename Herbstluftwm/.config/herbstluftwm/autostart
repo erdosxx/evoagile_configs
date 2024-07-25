@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 hc() {
-    herbstclient "$@"
+	herbstclient "$@"
 }
 
 hc emit_hook reload
@@ -10,16 +10,15 @@ hc emit_hook reload
 #-----------#
 
 launch_process() {
-  local process="$1"
+	local process="$1"
 
-  pfshot="$(pidof "$process")"
-  if [[ "$pfshot" -lt 1 ]];
-  then 
-    $process &
-  else
-    pkill "$process";
-    $process &
-  fi
+	pfshot="$(pidof "$process")"
+	if [[ "$pfshot" -lt 1 ]]; then
+		$process &
+	else
+		pkill "$process"
+		$process &
+	fi
 }
 
 # Screenshots
@@ -40,7 +39,7 @@ launch_process gentoo-pipewire-launcher
 # picom -b
 
 xfce4-power-manager &
-# to run urxvt properly, we need to read .Xresources. 
+# to run urxvt properly, we need to read .Xresources.
 # xrdb "$HOME/.Xresources" &
 
 # Music player deamon
@@ -51,24 +50,25 @@ nm-applet &
 # blueman-manager &
 /usr/bin/gnome-keyring-daemon --start --components=secrets
 
-batticon(){
-    batt="$(pidof cbatticon)"
-    if [[ "$batt" -ge 1 ]]; then 
-        pkill cbatticon;
-    fi
-    cbatticon --icon-type symbolic --hide-notification /sys/class/power_supply/BAT0 &
+batticon() {
+	batt="$(pidof cbatticon)"
+	if [[ "$batt" -ge 1 ]]; then
+		pkill cbatticon
+	fi
+	cbatticon --icon-type symbolic --hide-notification /sys/class/power_supply/BAT0 &
 }
+batticon
+
 # Palse audio control applet
 # pa-applet does not work.
-volicon(){
-    vol="$(pidof pa-applet)"
-    if [[ "$vol" -ge 1 ]]; then 
-        pkill pa-applet;
-    fi
-    "$HOME/.local/bin/pa-applet" &
+volicon() {
+	vol="$(pidof pa-applet)"
+	if [[ "$vol" -ge 1 ]]; then
+		pkill pa-applet
+	fi
+	"$HOME/.local/bin/pa-applet" &
 }
-# volicon
-batticon
+volicon
 
 #$HOME/.config/herbstluftwm/xmobar && herbstclient use_index 1
 #sleep 4 && trayer --edge top --align right --widthtype request --padding 3 --iconspacing 5 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x181818 --height 20 &
@@ -99,23 +99,23 @@ hc detect_monitors
 #----------------#
 panel=~/.config/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(hc list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" "$monitor" &
+for monitor in $(hc list_monitors | cut -d: -f1); do
+	# start it on each monitor
+	"$panel" "$monitor" &
 done
 
 # Auto startup programs
 # Only run at the first time
 # Ref: https://herbstluftwm.org/faq.html#firstautostart
-if hc silent new_attr bool my_not_first_autostart ; then
-  slack &
-  brave-bin &
-  zotero &
-  obsidian &
-  element-desktop &
-  microsoft-edge-stable &
-  # After loading, remove rule to define workspace for each startup program.
-  sleep 60
-  # wait
-  hc unrule 'startup' 
+if hc silent new_attr bool my_not_first_autostart; then
+	slack &
+	brave-bin &
+	zotero &
+	obsidian &
+	element-desktop &
+	microsoft-edge-stable &
+	# After loading, remove rule to define workspace for each startup program.
+	sleep 60
+	# wait
+	hc unrule 'startup'
 fi
