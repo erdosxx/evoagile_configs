@@ -4,6 +4,14 @@ export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=fcitx
 
+if ! pgrep -x "fcitx" >/dev/null; then
+	fcitx
+fi
+
+if ! pgrep -x "imwheel" >/dev/null; then
+	imwheel
+fi
+
 # Environment variables set everywhere
 export EDITOR="nvim"
 export TERMINAL="$HOME/.local/bin/st"
