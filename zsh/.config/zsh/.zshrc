@@ -14,8 +14,9 @@ plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/vim"
-# plug "zap-zsh/zap-prompt"
-# source "$HOME/.config/zsh/shrink-path.plugin.zsh"
+plug "zap-zsh/completions"
+plug "zap-zsh/zap-prompt"
+source "$HOME/.config/zsh/shrink-path.plugin.zsh"
 source "$HOME/.config/zsh/zsh-prompt.zsh"
 plug "zap-zsh/fzf"
 # plug "zap-zsh/exa"
@@ -52,3 +53,7 @@ bindkey -s '^b' '^ucp_primary_to_clip\n'
 
 # Set UK key board layout
 # setxkbmap -layout gb -variant "" -model latitude
+
+# for poetry
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
